@@ -1,40 +1,34 @@
-# Phase 2: Flux Architecture and Note CRUD (2 days, W1 F 6pm)
+### Phase 2: Search Functionality (2 days, W2 M 6pm)
 
 ## Rails
 ### Models
-* Note
+
 
 ### Controllers
-* Api::NotesController (create, destroy, index, show, update)
 
 ### Views
-* notes/index.json.jbuilder
-* notes/show.json.jbuilder
 
 ## Flux
 ### Views (React Components)
-* NotesIndex
-  - NotesIndexItem
-* NoteForm
 
 ### Stores
-* Note
+* Movie
+* Actor
+* Casting
 
 ### Actions
-* `ApiActions.receiveAllNotes`
-* `ApiActions.receiveSingleNote`
-* `ApiActions.deleteNote`
-* `NoteActions.fetchAllNotes`
-* `NoteActions.fetchSingleNote`
-* `NoteActions.createNote`
-* `NoteActions.editNote`
-* `NoteActions.destroyNote`
+* `MovieAction.FetchMoviesMatchingParam`
+* `ActorAction.FetchActorsMatchingParam`
+* `MovieAction.FetchHotMovies`
+* `MovieAction.FetchInTheatreMovies`
+* `CastingAction.FetchCastingMatchingParam`  
 
 ### ApiUtil
-* `ApiUtil.fetchAllNotes`
-* `ApiUtil.fetchSingleNote`
-* `ApiUtil.createNote`
-* `ApiUtil.editNote`
-* `ApiUtil.destroyNote`
+* `ApiUtil.FetchMoviesMatchingParam`
+* `ApiUtil.FetchActorsMatchingParam`
+* `ApiUtil.FetchHotMovies`
+* `ApiUtil.FetchInTheatreMovies`
+* `ApiUtil.FetchCastingMatchingParam`
 
 ## Gems/Libraries
+* TMDb (movie database)

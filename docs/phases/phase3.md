@@ -1,42 +1,54 @@
-# Phase 3: Notebooks (2 day, W2 Tu 6pm)
+### Phase 3: Backend setup and Front End User Authentication (2 days, W2 W 6pm)
 
 ## Rails
 ### Models
-* Notebook
-* Tag
-* Tagging
+* User
+* Session
 
 ### Controllers
-* Api::NotebooksController (create, destroy, index, show, update)
+* Api::UsersController (create)
+* Api::SessionsController (create, destroy, show)
 
 ### Views
-* notebooks/index.json.jbuilder
-* notebooks/show.json.jbuilder
+* api/users/new.html.erb
+* api/session/new.html.erb
+
 
 ## Flux
 ### Views (React Components)
-* NotebooksIndex
-  - NotebookIndexItem
-* NotebookForm
+* App
+* LoginForm
+* SignupForm
+* NotesIndex (just a skeleton)
 
 ### Stores
-* Notebook
+* CurrentUser
+* Error
 
 ### Actions
-* `ApiActions.receiveAllNotebooks`
-* `ApiActions.receiveSingleNotebook`
-* `ApiActions.deleteNotebook`
-* `NotebookActions.fetchAllNotebooks`
-* `NotebookActions.fetchSingleNotebook`
-* `NotebookActions.createNotebook`
-* `NotebookActions.editNotebook`
-* `NotebookActions.destroyNotebook`
+* `SessionActions.logIn`
+* `SessionActions.signUp`
+* `SessionActions.fetchCurrentUser`
+* `SessionActions.signOut`
+* `SessionActions.receiveCurrentUser`
+* `SessionActions.removeCurrentUser`
+* `ErrorActions.setErrors`
+* `ErrorActions.removeErrors`
 
 ### ApiUtil
-* `ApiUtil.fetchAllNotebooks`
-* `ApiUtil.fetchSingleNotebook`
-* `ApiUtil.createNotebook`
-* `ApiUtil.editNotebook`
-* `ApiUtil.destroyNotebook`
+* `logIn`
+* `logOut`
+* `signUp`  
+* `fetchCurrentUser`
 
 ## Gems/Libraries
+* BCrypt (Gem)
+* "babel-core": "^6.2.0",
+* "babel-loader": "^6.2.0",
+* "babel-preset-react": "^6.1.18",
+* "webpack": "^1.12.2",
+* "babel-preset-es2015": "^6.9.0",
+* "flux": "^2.1.1",
+* "react": "^0.14.2",
+* "react-dom": "^0.14.2",
+* "react-router": "2.0.1"
