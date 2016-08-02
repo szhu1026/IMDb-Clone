@@ -16,9 +16,7 @@
     "flux": "^2.1.1",
     "react": "^0.14.0",
     "react-dom": "^0.14.0",
-    "react-router": "2.0.*"
-  },
-  "dependencies": {
+    "react-router": "2.0.*",
     "babel-core": "^6.1.4",
     "babel-jest": "^9.0.0",
     "babel-loader": "^6.1.0",
