@@ -14,7 +14,6 @@ const App = React.createClass({
 
 const routes = (
   <Route path="/" component={App}>
-    // <Route path="actors/:actorId" component={Actor} />
   </Route>
 );
 
