@@ -1,0 +1,52 @@
+{
+  "name": "react-flux-assessment",
+  "version": "1.0.0",
+  "description": "App Academy's Assessment 06",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [
+    "react",
+    "flux",
+    "assessment"
+  ],
+  "author": "App Academy",
+  "license": "ISC",
+  "dependencies": {
+    "flux": "^2.1.1",
+    "react": "^0.14.0",
+    "react-dom": "^0.14.0",
+    "react-router": "2.0.*"
+  },
+  "devDependencies": {
+    "babel-core": "^6.1.4",
+    "babel-jest": "^9.0.0",
+    "babel-loader": "^6.1.0",
+    "babel-preset-es2015": "*",
+    "babel-preset-react": "*",
+    "jest-cli": "^11.0.2",
+    "jquery": "^2.2.3",
+    "node-loader": "^0.5.0",
+    "react-addons-test-utils": "~0.14.0",
+    "webpack": "^1.12.2"
+  },
+  "jest": {
+    "unmockedModulePathPatterns": [
+      "<rootDir>/node_modules/react",
+      "<rootDir>/node_modules/flux",
+      "<rootDir>/node_modules/(?!fbemitter)",
+      "<rootDir>/node_modules/react-router",
+      "<rootDir>/node_modules/react-dom",
+      "<rootDir>/node_modules/react-addons-test-utils",
+      "<rootDir>/node_modules/rewire"
+    ],
+    "verbose": "true"
+  },
+  "engines": {
+    "node": "6.3.0",
+    "npm": "3.10.3"
+  },
+  "scripts": {
+    "postinstall": "./node_modules/.bin/webpack"
+  }
+}
