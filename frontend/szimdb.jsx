@@ -1,13 +1,14 @@
 import { Router, Route, IndexRoute, Link, hashHistory } from 'react-router'
 
 const React = require('react'),
-      ReactDOM = require('react-dom')
+      ReactDOM = require('react-dom'),
+      Actor = require('./components/actor_component.jsx')
 
 const App = React.createClass({
   render () {
     return (
       <div>
-        <p>hello</p>
+        {this.props.children}
       </div>
     );
   }
@@ -15,13 +16,16 @@ const App = React.createClass({
 
 const routes = (
   <Route path="/" component={App}>
+    <Route path="/actors/:actorId" component={Actor}/>
   </Route>
 );
 
 document.addEventListener("DOMContentLoaded", () => {
-  const root = document.getElementById("content");
+  let root = document.getElementById("content");
   ReactDOM.render(<Router history={hashHistory} routes={routes}/>, root);
 });
+
+// window.routes = routes;
 
 
 // console.log("hello world!");

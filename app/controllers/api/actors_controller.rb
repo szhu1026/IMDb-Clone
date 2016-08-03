@@ -1,10 +1,9 @@
-class ActorsController < ApplicationController
+class Api::ActorsController < ApplicationController
 
   def show
 
-    @actor = Actor.find_by({api_id: params[:api_id]});
-    if @actor
-      render json: @actor
+    if Actor.find_by({api_id: params[:api_id]})
+      @actor = Actor.find_by({api_id: params[:api_id]})
     else
       #request
       api_id = params[:api_id]
@@ -28,7 +27,6 @@ class ActorsController < ApplicationController
       }
 
       @actor = Actor.create(actor_params);
-      render json: @actor
     end
 
   end

@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
   root to: "static_pages#root"
-  resources :actors, param: :api_id
+
+  namespace :api,defaults: {format: :json} do
+    resources :actors, param: :api_id
+  end
 end
