@@ -8,25 +8,18 @@ let ActorIntroComponent = require('./actor_intro_component')
 let Actor = React.createClass({
   getInitialState: function(){
     let actor = ActorStore.find(this.props.params.actorId);
-    return ({actor: {}, casting: {}});
+    return ({actor: {}});
   },
   componentDidMount: function(){
     this.actorListener = ActorStore.addListener(this.setActor);
-    this.castingListener = ActorStore.addListener(this.setActorCasting);
     ActorActions.getActor(this.props.params.actorId);
-    ActorActions.getActorCasting(this.props.params.actorId);
   },
   componentWillUnmount: function(){
     this.actorListener.remove();
-    this.castingListener.remove();
   },
   setActor: function(){
     let actor = ActorStore.find(this.props.params.actorId);
     this.setState({actor: actor});
-  },
-  setActorCasting: function(){
-    let actor_casting = ActorStore.find_casting(this.props.params.actorId);
-    this.setState({actor_casting: actor_casting});
   },
   render: function(){
       return (

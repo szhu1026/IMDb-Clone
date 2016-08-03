@@ -16,7 +16,6 @@ ActorStore.find = function(id) {
   return _actor[id];
 };
 
-
 ActorStore.__onDispatch = function(dispatch) {
   switch (dispatch.actionType){
     case ActorConstants.ACTOR_RECEIVED:

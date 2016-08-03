@@ -2,7 +2,8 @@ import { Router, Route, IndexRoute, Link, hashHistory } from 'react-router'
 
 const React = require('react'),
       ReactDOM = require('react-dom'),
-      Actor = require('./components/actor_component.jsx')
+      Actor = require('./components/actor_component.jsx'),
+      Movie = require('./components/movie_component.jsx')
 
 const App = React.createClass({
   render () {
@@ -17,6 +18,7 @@ const App = React.createClass({
 const routes = (
   <Route path="/" component={App}>
     <Route path="/actors/:actorId" component={Actor}/>
+    <Route path="/movies/:movieId" component={Movie}/>
   </Route>
 );
 

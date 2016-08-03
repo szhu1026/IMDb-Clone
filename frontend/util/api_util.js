@@ -6,5 +6,14 @@ module.exports = {
         cb(results);
       }
     });
+  },
+
+  getMovie: function(id, cb){
+    $.ajax({
+      url: `api/movies/${id}`,
+      success: function(results) {
+        cb(results);
+      }
+    });
   }
 }
