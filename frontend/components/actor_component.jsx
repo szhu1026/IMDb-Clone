@@ -3,11 +3,10 @@ let ActorStore = require('../stores/actor_store');
 let ActorActions = require('../actions/actor_actions');
 let Link = require('react-router').Link;
 let ActorIntroComponent = require('./actor_intro_component')
-
+let ActorCastingComponent = require('./actor_casting_component')
 
 let Actor = React.createClass({
   getInitialState: function(){
-    let actor = ActorStore.find(this.props.params.actorId);
     return ({actor: {}});
   },
   componentDidMount: function(){
@@ -25,6 +24,7 @@ let Actor = React.createClass({
       return (
         <div>
           <ActorIntroComponent actor={this.state.actor}/>
+          <ActorCastingComponent actor={this.state.actor} api_id={this.props.params.actorId}/>
         </div>
       )
   }

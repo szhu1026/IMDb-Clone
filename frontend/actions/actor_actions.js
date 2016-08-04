@@ -11,5 +11,14 @@ module.exports = {
       actionType: ActorConstants.ACTOR_RECEIVED,
       actor: actor
     })
+  },
+  getMovieActors: function(movieid){
+    APIUtil.getMovieActors(movieid, this.receiveMovieActors);
+  },
+  receiveMovieActors: function(actors){
+    APIDispatcher.dispatch({
+      actionType: ActorConstants.MOVIE_ACTORS_RECEIVED,
+      actors: actors
+    })
   }
 }

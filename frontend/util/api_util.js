@@ -15,5 +15,23 @@ module.exports = {
         cb(results);
       }
     });
+  },
+
+  getActorMovies: function(id, cb){
+    $.ajax({
+      url: `api/actors/${id}/movies`,
+      success: function(results) {
+        cb(results);
+      }
+    });
+  },
+
+  getMovieActors: function(id, cb){
+    $.ajax({
+      url: `api/movies/${id}/actors`,
+      success: function(results) {
+        cb(results);
+      }
+    });
   }
 }

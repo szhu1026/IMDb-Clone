@@ -3,7 +3,8 @@ import { Router, Route, IndexRoute, Link, hashHistory } from 'react-router'
 const React = require('react'),
       ReactDOM = require('react-dom'),
       Actor = require('./components/actor_component.jsx'),
-      Movie = require('./components/movie_component.jsx')
+      Movie = require('./components/movie_component.jsx'),
+      ActorCasting = require('./components/actor_casting_component.jsx')
 
 const App = React.createClass({
   render () {

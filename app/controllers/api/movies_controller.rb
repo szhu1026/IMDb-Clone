@@ -1,14 +1,54 @@
 class Api::MoviesController < ApplicationController
   def show
     #movie base information pull
-    if Movie.find_by({api_id: params[:api_id]})
+    if Movie.where({vote_average: nil, api_id: params[:api_id]})
+      @movie = pull_movie_data(params[:api_id])
+    elsif Movie.where({api_id: params[:api_id]})
       @movie = Movie.find_by({api_id: params[:api_id]})
     else
       @movie = pull_movie_data(params[:api_id])
     end
   end
 
+  def actors
+    if Casting.where({movie_id: params[:api_id]}).empty?
+      pull_casting_data(params[:api_id]);
+      actor_ids = Casting.where({movie_id: params[:api_id]}).map{|id| id.actor_id}
+      @actors = Actor.where({api_id: actor_ids})
+    else
+      actor_ids = Casting.where({movie_id: params[:api_id]}).map{|id| id.actor_id}
+      @actors = Actor.where({api_id: actor_ids})
+    end
+  end
+
   private
+
+
+  def pull_casting_data(api_id)
+    api_id = params[:api_id]
+    link = "https://api.themoviedb.org/3/movie/#{api_id}/credits?api_key=50a303126fa608b8780f3e3caaf4695a"
+    response = RestClient::Request.execute(url: link, method: :get, verify_ssl: false)
+    response_data = JSON.parse(response)["cast"];
+
+    response_data.each do |elem|
+      #creating new actor object
+      # pull_actor_data(elem["id"]);
+      casting_params = {
+        "actor_id": elem["id"].to_s,
+        "movie_id": api_id,
+      }
+      Casting.create(casting_params);
+    end
+
+    data = response_data.each do |actor|
+      next if !Actor.find_by({api_id: actor["id"]}).nil?
+      params = {profile_path: actor["profile_path"],
+       name: actor["name"],
+       api_id: actor["id"]
+      }
+      Actor.create(params);
+    end
+  end
 
   def pull_movie_data(api_id)
     api_id = params[:api_id]
@@ -23,11 +63,10 @@ class Api::MoviesController < ApplicationController
       "runtime": response_data["runtime"],
       "vote_average": response_data["vote_average"],
       "poster_path": response_data["poster_path"],
-      "api_id": response_data["id"]
+      "api_id": response_data["id"],
+      "release_date": response_data["release_date"]
     }
 
     Movie.create(movie_params);
   end
-
-
 end

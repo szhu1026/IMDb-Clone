@@ -2,7 +2,8 @@ let React = require('react');
 let MovieStore = require('../stores/movie_store');
 let MovieActions = require('../actions/movie_actions');
 let Link = require('react-router').Link;
-let MovieIntroComponent = require('../components/movie_intro_component')
+let MovieIntroComponent = require('../components/movie_intro_component');
+let MovieCastingComponent = require('../components/movie_casting_component')
 
 
 let Movie = React.createClass({
@@ -25,6 +26,7 @@ let Movie = React.createClass({
       return (
         <div>
           <MovieIntroComponent movie={this.state.movie}/>
+          <MovieCastingComponent movie={this.state.actor} api_id={this.props.params.movieId}/>
         </div>
       );
   }

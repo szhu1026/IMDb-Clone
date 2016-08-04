@@ -18,4 +18,12 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :api,defaults: {format: :json} do
+    resources :movies, param: :api_id, only: [:show] do
+      member do
+        get :actors
+      end
+    end
+  end
+
 end
