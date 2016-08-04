@@ -13,15 +13,17 @@ class Api::ActorsController < ApplicationController
   end
 
   def movies
-    # if Casting.where({actor_id: params[:api_id]}).empty?
-      pull_casting_data(params[:api_id]);
-    #   movie_ids = Casting.where({actor_id: params[:api_id]}).map{|id| id.movie_id}
-    #   @movies = Movie.where({api_id: movie_ids})
-    # else
+    if Casting.where({actor_id: params[:api_id], actor_casting: true}).empty?
+      Casting.where({actor_id: params[:api_id], actor_casting: false, movie_casting: true}).each do |elem|
+        elem.update_attribute(:actor_casting, true)
+      end
+      movie_ids = pull_casting_data(params[:api_id]);
       movie_ids = Casting.where({actor_id: params[:api_id]}).map{|id| id.movie_id}
       @movies = Movie.where({api_id: movie_ids})
-    # end
-
+    else
+      movie_ids = Casting.where({actor_id: params[:api_id]}).map{|id| id.movie_id}
+      @movies = Movie.where({api_id: movie_ids})
+    end
   end
 
   private
@@ -33,18 +35,17 @@ class Api::ActorsController < ApplicationController
     response_data = JSON.parse(response)["cast"];
 
     response_data.each do |elem|
-      #creating new actor object
+      #creating new casting object
       pull_actor_data(elem["id"]);
-      next if Casting.find_by({movie_id: elem["id"].to_s, actor_id: api_id})
       casting_params = {
         "movie_id": elem["id"].to_s,
-        "actor_id": api_id
+        "actor_id": api_id,
+        "actor_casting": true
       }
       Casting.create(casting_params);
     end
 
     data = response_data.each do |movie|
-      next if Movie.find_by({api_id: movie["id"]})
       params = {poster_path: movie["poster_path"],
        original_title: movie["original_title"],
        release_date: movie["release_date"],
@@ -52,6 +53,7 @@ class Api::ActorsController < ApplicationController
       }
       Movie.create(params);
     end
+
   end
 
   def pull_actor_data(api_id)

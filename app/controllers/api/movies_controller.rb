@@ -11,14 +11,19 @@ class Api::MoviesController < ApplicationController
   end
 
   def actors
-    # if Casting.where({movie_id: params[:api_id]}).empty?
-      pull_casting_data(params[:api_id]);
-    #   actor_ids = Casting.where({movie_id: params[:api_id]}).map{|id| id.actor_id}
-    #   @actors = Actor.where({api_id: actor_ids})
-    # else
+
+    if Casting.where({movie_id: params[:api_id], movie_casting: true}).empty?
+      Casting.where({movie_id: params[:api_id], movie_casting: false, actor_casting: true}).each do |elem|
+        elem.update_attribute(:movie_casting, true)
+      end
+      actor_ids = pull_casting_data(params[:api_id]);
       actor_ids = Casting.where({movie_id: params[:api_id]}).map{|id| id.actor_id}
       @actors = Actor.where({api_id: actor_ids})
-    # end
+    else
+      actor_ids = Casting.where({movie_id: params[:api_id]}).map{|id| id.actor_id}
+      @actors = Actor.where({api_id: actor_ids})
+    end
+
   end
 
   private
@@ -32,17 +37,17 @@ class Api::MoviesController < ApplicationController
 
     response_data.each do |elem|
       #creating new actor object
-      # pull_actor_data(elem["id"]);
-      next if Casting.find_by({actor_id: elem["id"].to_s, movie_id: api_id})
+
       casting_params = {
         "actor_id": elem["id"].to_s,
         "movie_id": api_id,
+        "movie_casting": true
       }
       Casting.create(casting_params);
     end
 
     data = response_data.each do |actor|
-      next if !Actor.find_by({api_id: actor["id"]}).nil?
+      # next if !Actor.find_by({api_id: actor["id"]}).nil?
       params = {profile_path: actor["profile_path"],
        name: actor["name"],
        api_id: actor["id"]
