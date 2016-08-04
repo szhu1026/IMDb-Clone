@@ -7,7 +7,7 @@ let ActorCastingComponent = require('./actor_casting_component')
 
 let Actor = React.createClass({
   getInitialState: function(){
-    return ({actor: {}});
+    return ({actor: {}, fetching: true});
   },
   componentDidMount: function(){
     this.actorListener = ActorStore.addListener(this.setActor);
@@ -18,15 +18,24 @@ let Actor = React.createClass({
   },
   setActor: function(){
     let actor = ActorStore.find(this.props.params.actorId);
-    this.setState({actor: actor});
+    this.setState({actor: actor, fetching: false});
   },
   render: function(){
+    if (this.state.fetching === false) {
       return (
         <div>
           <ActorIntroComponent actor={this.state.actor}/>
           <ActorCastingComponent actor={this.state.actor} api_id={this.props.params.actorId}/>
         </div>
-      )
+      );
+    }
+    else {
+      return (
+        <div>
+          <p> loading </p>
+        </div>
+      );
+    }
   }
 });
 module.exports = Actor

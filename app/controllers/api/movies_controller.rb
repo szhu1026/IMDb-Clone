@@ -11,14 +11,14 @@ class Api::MoviesController < ApplicationController
   end
 
   def actors
-    if Casting.where({movie_id: params[:api_id]}).empty?
+    # if Casting.where({movie_id: params[:api_id]}).empty?
       pull_casting_data(params[:api_id]);
+    #   actor_ids = Casting.where({movie_id: params[:api_id]}).map{|id| id.actor_id}
+    #   @actors = Actor.where({api_id: actor_ids})
+    # else
       actor_ids = Casting.where({movie_id: params[:api_id]}).map{|id| id.actor_id}
       @actors = Actor.where({api_id: actor_ids})
-    else
-      actor_ids = Casting.where({movie_id: params[:api_id]}).map{|id| id.actor_id}
-      @actors = Actor.where({api_id: actor_ids})
-    end
+    # end
   end
 
   private
@@ -33,6 +33,7 @@ class Api::MoviesController < ApplicationController
     response_data.each do |elem|
       #creating new actor object
       # pull_actor_data(elem["id"]);
+      next if Casting.find_by({actor_id: elem["id"].to_s, movie_id: api_id})
       casting_params = {
         "actor_id": elem["id"].to_s,
         "movie_id": api_id,

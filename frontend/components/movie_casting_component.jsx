@@ -6,7 +6,7 @@ let MovieCastingItemComponent = require('./movie_casting_item_component');
 
 let ActorCastingComponent = React.createClass({
   getInitialState: function(){
-    return ({actors: []});
+    return ({actors: [], fetching: true});
   },
   componentDidMount: function(){
     this.actorListener = ActorStore.addListener(this.setActors);
@@ -17,22 +17,31 @@ let ActorCastingComponent = React.createClass({
   },
   setActors: function(){
     let actors = ActorStore.all();
-    this.setState({actors: actors});
+    this.setState({actors: actors, fetching: false});
   },
 
   render: function(){
-    return (
-      <div>
+    if (this.state.fetching === false){
+      return (
+        <div>
         <p>credits</p>
         <ul>
-          {this.state.actors.map(function(actor, idx){
-            return (
-              <MovieCastingItemComponent key={idx} actor={actor}/>
-            );
-          })}
+        {this.state.actors.map(function(actor, idx){
+          return (
+            <MovieCastingItemComponent key={idx} actor={actor}/>
+          );
+        })}
         </ul>
-      </div>
-    );
+        </div>
+      );
+    }
+    else {
+      return(
+        <div>
+        <p> loading </p>
+        </div>
+      );
+    }
   }
 });
 

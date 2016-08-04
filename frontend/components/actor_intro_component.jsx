@@ -5,7 +5,7 @@ let Link = require('react-router').Link;
 
 let ActorIntroComponent = React.createClass({
   render: function(){
-    if (this.props.actor.profile_path === "null") {
+    if (this.props.actor.profile_path === null) {
       return (
           <div className="actor-intro-component">
             <p className="actor-name"> Name: {this.props.actor.name} </p>
