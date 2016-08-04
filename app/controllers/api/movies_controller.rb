@@ -20,8 +20,9 @@ class Api::MoviesController < ApplicationController
       actor_ids = Casting.where({movie_id: params[:api_id]}).map{|id| id.actor_id}
       @actors = Actor.where({api_id: actor_ids})
     else
-      actor_ids = Casting.where({movie_id: params[:api_id]}).map{|id| id.actor_id}
-      @actors = Actor.where({api_id: actor_ids})
+      # actor_ids = Casting.where({movie_id: params[:api_id]}).map{|id| id.actor_id}
+      # @actors = Actor.where({api_id: actor_ids})
+      @actors = Movie.find_by({api_id: params[:api_id]}).actors
     end
 
   end
