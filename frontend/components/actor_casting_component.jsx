@@ -16,7 +16,24 @@ let ActorCastingComponent = React.createClass({
     this.movieListener.remove();
   },
   setMovies: function(){
-    let movies = MovieStore.all();
+    let movies = MovieStore.all().sort(function(a,b){
+        if (a.release_date === null) {
+          return 1;
+        }
+        else if (b.release_date === null) {
+          return -1;
+        }
+        else if (parseInt(a.release_date.slice(0,4)) < parseInt(b.release_date.slice(0,4))) {
+          return 1;
+        }
+        else if (parseInt(a.release_date.slice(0,4)) > parseInt(b.release_date.slice(0,4))) {
+          return 0;
+        }
+        else {
+          return 0;
+        }
+    });
+
     this.setState({movies: movies, fetching: false});
   },
 

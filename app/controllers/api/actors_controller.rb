@@ -2,11 +2,14 @@ class Api::ActorsController < ApplicationController
 
   def show
     #actor base information pull
-    if Actor.find_by({api_id: params[:api_id]})
+    if Actor.where({birthday: nil, api_id: params[:api_id]})
+      @actor = pull_actor_data(params[:api_id])
+    elsif Actor.where({api_id: params[:api_id]})
       @actor = Actor.find_by({api_id: params[:api_id]})
     else
       @actor = pull_actor_data(params[:api_id])
     end
+
   end
 
   def movies
