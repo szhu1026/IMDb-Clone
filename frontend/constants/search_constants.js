@@ -1,0 +1,3 @@
+module.exports = {
+  MOVIE_SEARCH_RECEIVED: "MOVIE_SEARCH_RECEIVED",
+}
