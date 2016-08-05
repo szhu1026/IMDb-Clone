@@ -12,5 +12,19 @@ module.exports = {
       actionType: SearchConstants.MOVIE_SEARCH_RECEIVED,
       movies: movies
     })
+  },
+  getActorSearchResults: function(queryText){
+    APIUtil.getActorSearchResults(queryText, this.receiveActorSearchResults);
+  },
+  receiveActorSearchResults: function(actors){
+    APIDispatcher.dispatch({
+      actionType: SearchConstants.ACTOR_SEARCH_RECEIVED,
+      actors: actors
+    })
+  },
+  clearStore: function(){
+    APIDispatcher.dispatch({
+      actionType: SearchConstants.CLEAR_STORE
+    });
   }
 }

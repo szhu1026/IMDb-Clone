@@ -5,7 +5,10 @@ const React = require('react'),
       Actor = require('./components/actor_component.jsx'),
       Movie = require('./components/movie_component.jsx'),
       ActorCasting = require('./components/actor_casting_component.jsx'),
-      InstantBox = require('./components/instant_box_component.jsx')
+      InstantBoxMovies = require('./components/instant_box_movies_component.jsx'),
+      InstantBoxActors = require('./components/instant_box_actors_component.jsx'),
+      Search = require('./components/drop_down_search_menu_component.jsx')
+
 
 const App = React.createClass({
   render () {
@@ -19,7 +22,7 @@ const App = React.createClass({
 
 const routes = (
   <Route path="/" component={App}>
-    <Route path ="/search" component={InstantBox}/>
+    <Route path ="/search" component={Search}/>
     <Route path="/actors/:actorId" component={Actor}/>
     <Route path="/movies/:movieId" component={Movie}/>
   </Route>
