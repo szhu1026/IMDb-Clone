@@ -23,7 +23,7 @@ let Actor = React.createClass({
   render: function(){
     if (this.state.fetching === false) {
       return (
-        <div>
+        <div className="ActorComponent">
           <ActorIntroComponent actor={this.state.actor}/>
           <ActorCastingComponent actor={this.state.actor} api_id={this.props.params.actorId}/>
         </div>

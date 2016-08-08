@@ -27,7 +27,7 @@ let ActorCastingComponent = React.createClass({
           return 1;
         }
         else if (parseInt(a.release_date.slice(0,4)) > parseInt(b.release_date.slice(0,4))) {
-          return 0;
+          return -1;
         }
         else {
           return 0;
@@ -40,9 +40,10 @@ let ActorCastingComponent = React.createClass({
   render: function(){
     if (this.state.fetching === false) {
       return (
-        <div>
-        <p>credits</p>
-        <ul>
+        <div className="Actor-Casting">
+        <p className="Title">Filmography</p>
+        <p className="Headers">Actor</p>
+        <ul className="Actor-Casting-List group">
         {this.state.movies.map(function(movie, idx){
           return (
             <ActorCastingItemComponent key={idx} movie={movie}/>
