@@ -5,7 +5,7 @@ let DisplayTable = require('./display_table_component');
 let SearchStore = require('../stores/search_store.js');
 let SearchActions = require('../actions/search_actions.js');
 
-let InstantBoxMovies = React.createClass({
+let InstantBoxActors = React.createClass({
   getInitialState: function(){
     return({
       query: "",
@@ -23,7 +23,10 @@ let InstantBoxMovies = React.createClass({
       query: queryText
     });
 
-    if (queryText.length > 0) {
+    if (queryText.length > 0 && this.props.type === "ActorSearch") {
+      SearchActions.getActorSearchResults(queryText);
+    }
+    else if (queryText.length > 0 && this.props.type === "MovieSearch") {
       SearchActions.getMovieSearchResults(queryText);
     }
     else {
@@ -38,9 +41,8 @@ let InstantBoxMovies = React.createClass({
   },
   render: function(){
     return (
-      <div className = "InstantBox">
-        <h1> Movie Search </h1>
-        <SearchBox query={this.state.query} doSearch={this.doSearch}/>
+      <div className="InstantBox">
+        <SearchBox query={this.state.query} doSearch={this.doSearch} value={this.state.query}/>
         <DisplayTable data={this.state.filteredData}/>
       </div>
     );
@@ -48,4 +50,4 @@ let InstantBoxMovies = React.createClass({
 
 });
 
-module.exports = InstantBoxMovies;
+module.exports = InstantBoxActors;

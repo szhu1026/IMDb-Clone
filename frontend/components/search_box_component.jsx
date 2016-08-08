@@ -8,8 +8,10 @@ let SearchBox = React.createClass({
   },
   render: function(){
     return (
-      <input type="text" ref="searchInput" placeholder="Search..."
-      value={this.props.query} onChange={this.doSearch}/>
+      <div className="Searchbox group">
+        <input type="text" ref="searchInput" placeholder="Search..."
+        value={this.props.query} onChange={this.doSearch}/>
+      </div>
     );
   }
 })

@@ -5,8 +5,6 @@ const React = require('react'),
       Actor = require('./components/actor_component.jsx'),
       Movie = require('./components/movie_component.jsx'),
       ActorCasting = require('./components/actor_casting_component.jsx'),
-      InstantBoxMovies = require('./components/instant_box_movies_component.jsx'),
-      InstantBoxActors = require('./components/instant_box_actors_component.jsx'),
       Search = require('./components/drop_down_search_menu_component.jsx')
 
 
