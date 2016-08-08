@@ -25,7 +25,7 @@ let Movie = React.createClass({
   render: function(){
     if (this.state.fetching === false) {
       return (
-        <div>
+        <div className="MovieComponent group">
         <MovieIntroComponent movie={this.state.movie}/>
         <MovieCastingComponent movie={this.state.actor} api_id={this.props.params.movieId}/>
         </div>

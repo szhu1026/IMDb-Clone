@@ -7,10 +7,14 @@ let MovieIntroComponent = React.createClass({
   render: function(){
       return (
         <div className="movie-intro-component">
-          <p className="movie-title"> Title: {this.props.movie.original_title} </p>
-          <p className="movie-rating"> Rating: {this.props.movie.vote_average} </p>
-          <p className="movie-biography"> Description: {this.props.movie.overview} </p>
-          <img src={`http://image.tmdb.org/t/p/w92/${this.props.movie.poster_path}`}/>
+          <div className="movie-intro-partone group">
+          <p className="movie-rating"> {this.props.movie.vote_average}/10</p>
+            <p className="movie-title"> {this.props.movie.original_title} </p>
+            <img className="movie-image" src={`http://image.tmdb.org/t/p/w154/${this.props.movie.poster_path}`}/>
+          </div>
+          <div className="movie-intro-text">
+            <p className="movie-biography"> {this.props.movie.overview} </p>
+          </div>
         </div>
       );
   }

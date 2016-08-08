@@ -23,9 +23,10 @@ let ActorCastingComponent = React.createClass({
   render: function(){
     if (this.state.fetching === false){
       return (
-        <div>
-        <p>credits</p>
-        <ul>
+        <div className="movie-casting-component">
+        <p className="head">Cast</p>
+        <p className="head-description"> Cast overview, first billed only: </p>
+        <ul className="movie-casting-list">
         {this.state.actors.map(function(actor, idx){
           return (
             <MovieCastingItemComponent key={idx} actor={actor}/>
