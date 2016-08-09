@@ -15,12 +15,20 @@ class Api::MoviesController < ApplicationController
     if Casting.where({movie_id: params[:api_id], movie_casting: true}).empty?
       actor_ids = pull_casting_data(params[:api_id]);
       actor_ids = Casting.where({movie_id: params[:api_id]}).map{|id| id.actor_id}
-      @actors = Actor.where({api_id: actor_ids})
+
+      @actors = Actor.select("actors.*, castings.character_name as character_name")
+      .joins(:castings)
+      .where({api_id: actor_ids})
+
+      # .where({api_id: actor_ids})
+
       Casting.where({movie_id: params[:api_id], movie_casting: false, actor_casting: true}).each do |elem|
         elem.update_attribute(:movie_casting, true)
       end
     else
       @actors = Movie.find_by({api_id: params[:api_id]}).actors
+      .joins(:castings)
+      .select("actors.*, castings.character_name as character_name")
     end
 
   end

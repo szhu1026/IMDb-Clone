@@ -4,26 +4,19 @@ Rails.application.routes.draw do
   namespace :api,defaults: {format: :json} do
     resources :actors, param: :api_id, only: [:show] do
     end
-  end
-
-  namespace :api,defaults: {format: :json} do
     resources :movies, param: :api_id, only: [:show]
-  end
-
-  namespace :api,defaults: {format: :json} do
     resources :actors, param: :api_id, only: [:show] do
       member do
         get :movies
       end
     end
-  end
-
-  namespace :api,defaults: {format: :json} do
     resources :movies, param: :api_id, only: [:show] do
       member do
         get :actors
       end
     end
+    resource :user, only: [:create]
+    resource :session, only: [:create, :destroy, :show]
   end
 
 end

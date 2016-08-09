@@ -17,12 +17,15 @@ let ActorCastingItemComponent = React.createClass({
     //   )
     // }
     // else {
+
+      let movie = (this.props.movie.release_date === null) ? "": this.props.movie.release_date.slice(0,4)
       return (
         <div>
         <Link to={`/movies/${this.props.movie.api_id}`} key={this.props.movie.api_id}>
           <li className="actor-casting-item-component">
             <p className="movie-name"> {this.props.movie.original_title} </p>
-            <p className="movie-date"> {this.props.movie.release_date.slice(0,4)} </p>
+            <p className="movie-date"> {movie} </p>
+            <p className="character_name"> {this.props.movie.character_name} </p>
           </li>
         </Link>
         </div>

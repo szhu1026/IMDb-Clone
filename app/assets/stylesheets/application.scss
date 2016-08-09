@@ -154,6 +154,15 @@
   padding: 10px 0;
 }
 
+.movie-casting-item-component > .movie-character-name{
+  float: right;
+  font-size: 13px;
+  color: #136CB2;
+  font-family: Verdana, Arial, sans-serif;
+  padding: 10px 0;
+  margin-right: 15px;
+}
+
 .movie-casting-list .movie-casting-item-component{
   background: #F0F8FF;
 }
@@ -270,7 +279,7 @@
 
 
 .actor-casting-item-component > .movie-name{
-  padding: 5px;
+  padding: 5px 5px 0px 5px;
   color: #136CB2;
   float: left;
   font-size: 13px;
@@ -284,4 +293,12 @@
   font-size: 13px;
   font-family: Verdana, Arial, sans-serif;
   padding: 5px 13px 5px 5px;
+}
+
+.actor-casting-item-component > .character_name {
+  float: left;
+  clear: both;
+  font-size: 10px;
+  font-family: Verdana, Arial, sans-serif;
+  padding-left: 25px;
 }
