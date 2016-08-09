@@ -20,6 +20,7 @@ const App = React.createClass({
 
 const routes = (
   <Route path="/" component={App}>
+    <IndexRoute component={Search}/>
     <Route path ="/search" component={Search}/>
     <Route path="/actors/:actorId" component={Actor}/>
     <Route path="/movies/:movieId" component={Movie}/>

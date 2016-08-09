@@ -4,6 +4,7 @@ let ActorActions = require('../actions/actor_actions');
 let Link = require('react-router').Link;
 let ActorIntroComponent = require('./actor_intro_component')
 let ActorCastingComponent = require('./actor_casting_component')
+let Searchbox = require('./drop_down_search_menu_component')
 
 let Actor = React.createClass({
   getInitialState: function(){
@@ -24,6 +25,7 @@ let Actor = React.createClass({
     if (this.state.fetching === false) {
       return (
         <div className="ActorComponent">
+          <Searchbox/>
           <ActorIntroComponent actor={this.state.actor}/>
           <ActorCastingComponent actor={this.state.actor} api_id={this.props.params.actorId}/>
         </div>

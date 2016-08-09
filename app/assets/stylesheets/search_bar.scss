@@ -1,0 +1,95 @@
+
+.Full-Search-Bar {
+  width: 730px;
+  height: 80px;
+  margin: 0 auto;
+  background: #424242;
+  position: relative;
+}
+
+.Searchbox input{
+  background: #fff;
+  width: 500px;
+  height: 40px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  padding-left: 10px;
+  border-radius: 3px;
+  margin: 20px 50px 0 50px;
+  font-family: Helvetica Neue, Arial, Helvetica, sans-serif;
+}
+
+.toggle{
+  padding-left: 9px;
+  margin: 20px;
+  border: 1px solid #ccc;
+  width: 120px;
+  height: 40px;
+  border-radius: 3px;
+  overflow: hidden;
+  background-color: #fff;
+  background: #fff url("http://www.scottgood.com/jsg/blog.nsf/images/arrowdown.gif") no-repeat 90% 50%;
+  float: left;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+select {
+  /*for firefox*/
+  -moz-appearance: none;
+  /*for chrome*/
+  -webkit-appearance:none;
+}
+
+.toggle select {
+  padding: 5px 8px;
+  width: 130%;
+  border: none;
+  box-shadow: none;
+  background-color: transparent;
+  background-image: none;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  font-family: Helvetica Neue, Arial, Helvetica, sans-serif;
+}
+
+.toggle select:focus {
+  outline: none;
+}
+
+.searchList {
+  display: block;
+  position: absolute;
+  left: 6px;
+  top: 62px;
+  width: 650px;
+  margin-left: 14px;
+  border-radius: 10px;
+}
+
+.searchList li{
+  display: block;
+  float: left;
+  width: 650px;
+  border-bottom: 1px solid #ccc;
+  background: #fff;
+}
+
+.searchList img{
+  width: 48px;
+  height: 48px;
+  float: left;
+  padding: 5px;
+}
+
+.searchList p{
+  float: left;
+  padding: 10px;
+  font-family: Helvetica Neue, Arial, Helvetica, sans-serif;
+  font-size: 14px;
+}
