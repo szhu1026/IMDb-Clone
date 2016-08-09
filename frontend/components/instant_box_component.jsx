@@ -39,11 +39,15 @@ let InstantBoxActors = React.createClass({
       filteredData: SearchStore.all()
     });
   },
+  clearText: function(){
+    this.setState({query: "", filteredData: []});
+  },
   render: function(){
+
     return (
       <div className="InstantBox">
         <SearchBox query={this.state.query} doSearch={this.doSearch} value={this.state.query}/>
-        <DisplayTable data={this.state.filteredData}/>
+        <DisplayTable data={this.state.filteredData} clearText={this.clearText}/>
       </div>
     );
   }

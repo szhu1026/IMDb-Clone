@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160804205742) do
+ActiveRecord::Schema.define(version: 20160809144314) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,8 +34,9 @@ ActiveRecord::Schema.define(version: 20160804205742) do
   create_table "castings", force: :cascade do |t|
     t.text    "movie_id"
     t.text    "actor_id"
-    t.boolean "actor_casting", default: false
-    t.boolean "movie_casting", default: false
+    t.text    "character_name"
+    t.boolean "actor_casting",  default: false
+    t.boolean "movie_casting",  default: false
   end
 
   create_table "movies", force: :cascade do |t|

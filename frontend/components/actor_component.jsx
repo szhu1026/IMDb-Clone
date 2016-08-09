@@ -17,6 +17,9 @@ let Actor = React.createClass({
   componentWillUnmount: function(){
     this.actorListener.remove();
   },
+  componentWillReceiveProps: function(nextProps){
+    ActorActions.getActor(nextProps.params.actorId);
+  },
   setActor: function(){
     let actor = ActorStore.find(this.props.params.actorId);
     this.setState({actor: actor, fetching: false});

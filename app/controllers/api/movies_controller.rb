@@ -39,7 +39,8 @@ class Api::MoviesController < ApplicationController
       casting_params = {
         "actor_id": elem["id"].to_s,
         "movie_id": api_id,
-        "movie_casting": true
+        "movie_casting": true,
+        "character_name": elem["character"]
       }
     end
 

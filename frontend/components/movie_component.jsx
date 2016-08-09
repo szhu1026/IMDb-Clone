@@ -19,6 +19,9 @@ let Movie = React.createClass({
   componentWillUnmount: function(){
     this.movieListener.remove();
   },
+  componentWillReceiveProps: function(nextProps){
+    MovieActions.getMovie(nextProps.params.movieId);
+  },
   setmovie: function(){
     let movie = MovieStore.find(this.props.params.movieId);
     this.setState({movie: movie, fetching: false});
@@ -29,7 +32,7 @@ let Movie = React.createClass({
         <div className="MovieComponent group">
         <Searchbox/>
         <MovieIntroComponent movie={this.state.movie}/>
-        <MovieCastingComponent movie={this.state.actor} api_id={this.props.params.movieId}/>
+        <MovieCastingComponent movie={this.state.movie} api_id={this.props.params.movieId}/>
         </div>
       );
     }
