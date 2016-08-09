@@ -30,7 +30,7 @@
   border-radius: 3px;
   overflow: hidden;
   background-color: #fff;
-  background: #fff url("http://www.scottgood.com/jsg/blog.nsf/images/arrowdown.gif") no-repeat 90% 50%;
+  background: #fff asset-url('arrowdown.gif') no-repeat 90% 50%;
   float: left;
 }
 
