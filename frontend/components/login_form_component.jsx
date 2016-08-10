@@ -73,22 +73,24 @@ const LoginForm = React.createClass({
 	render() {
 
     let navLink;
+		let formtype = this.formType() === "login" ? "Sign In" : "Sign Up"
     if (this.formType() === "login") {
       navLink = <Link to="/signup">sign up instead</Link>;
     } else {
       navLink = <Link to="/login">log in instead</Link>;
     }
 
+		// Please { this.formType() } below or { navLink }
+		//after login header
+		
 		return (
-			<div className="login-form-container">
+			<div className="login-form-container group">
+				<img className="login-logo" src={window.logo}/>
 				<form onSubmit={this.handleSubmit} className="login-form-box">
-	        You must be an SZIMDb user to add comments.
-					<br/>
-					Please { this.formType() } below or { navLink }
+	        <p className="login-header"> {formtype} </p>
 
 	        { this.fieldErrors("base") }
 					<div className="login-form">
-		        <br />
 						<label> Username:
 		          { this.fieldErrors("username") }
 							<input type="text"
@@ -107,7 +109,7 @@ const LoginForm = React.createClass({
 						</label>
 
 		        <br />
-						<input type="submit" value="Submit" />
+						<input className="submit" type="submit" value="Submit" />
 					</div>
 				</form>
 			</div>
