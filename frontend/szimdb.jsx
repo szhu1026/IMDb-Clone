@@ -5,7 +5,7 @@ const React = require('react'),
       Actor = require('./components/actor_component.jsx'),
       Movie = require('./components/movie_component.jsx'),
       ActorCasting = require('./components/actor_casting_component.jsx'),
-      Search = require('./components/drop_down_search_menu_component.jsx'),
+      Index = require('./components/index_component.jsx'),
       LogInForm = require('./components/login_form_component.jsx'),
       SessionStore = require('./stores/session_store'),
       SessionActions = require('./actions/session_actions');
@@ -23,10 +23,9 @@ const App = React.createClass({
 
 const routes = (
   <Route path="/" component={App}>
-    <IndexRoute component={Search}/>
+    <IndexRoute component={Index}/>
     <Route path="/login" component={LogInForm}/>
     <Route path="/signup" component={LogInForm}/>
-    <Route path ="/search" component={Search}/>
     <Route path="/actors/:actorId" component={Actor}/>
     <Route path="/movies/:movieId" component={Movie}/>
   </Route>

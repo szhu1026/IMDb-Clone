@@ -22,5 +22,14 @@ module.exports = {
       actionType: MovieConstants.ACTOR_MOVIES_RECEIVED,
       movies: movies
     })
+  },
+  getinTheatreMovies: function(){
+    APIUtil.getInTheatreMovies(this.receiveinTheatreMovies);
+  },
+  receiveinTheatreMovies: function(movies) {
+    APIDispatcher.dispatch({
+      actionType: MovieConstants.IN_THEATRE_MOVIES_RECEIVED,
+      movies: movies
+    })
   }
 }

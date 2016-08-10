@@ -38,8 +38,7 @@ let Movie = React.createClass({
     }
     else {
       return (
-        <div>
-          <p> loading </p>
+        <div className="loader">
         </div>
       );
     }

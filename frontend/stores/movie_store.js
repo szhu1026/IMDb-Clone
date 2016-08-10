@@ -15,7 +15,14 @@ let resetMovie = function(movie){
 let resetActorMovie = function(movies){
   _movies = {};
   movies.forEach(function(movie){
-    _movies[movie.api_id] = movie;
+    _movies[movie.id] = movie;
+  })
+};
+
+let resetInTheatreMovies = function(movies){
+  _movies = {};
+  movies.forEach(function(movie){
+    _movies[movie.id] = movie;
   })
 };
 
@@ -39,6 +46,10 @@ MovieStore.__onDispatch = function(dispatch) {
       break;
     case MovieConstants.ACTOR_MOVIES_RECEIVED:
       resetActorMovie(dispatch.movies);
+      this.__emitChange();
+      break;
+    case MovieConstants.IN_THEATRE_MOVIES_RECEIVED:
+      resetInTheatreMovies(dispatch.movies);
       this.__emitChange();
       break;
   }

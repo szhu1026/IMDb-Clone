@@ -1,0 +1,31 @@
+.inTheatreMovies {
+  width: 730px;
+  height: 1000px;
+  margin: 0 auto;
+  padding: 10px;
+  display: block;
+}
+
+.inTheatreMovies li {
+  float: left;
+  display: block;
+}
+
+.inTheatreMovies p {
+  width: 170px;
+  font-size: 12px;
+  text-align: center;
+  font-family: arial, sans-serif;
+  padding: 0 0 10px 8px;
+}
+
+.inTheatreMovies .movie-image {
+  width: 169px;
+  height: auto;
+  margin: 0 0 10px 11px;
+}
+
+.inTheatreMovies h1 {
+  display: block;
+  padding: 10px;
+}

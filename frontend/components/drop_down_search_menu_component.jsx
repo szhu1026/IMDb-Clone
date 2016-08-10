@@ -28,6 +28,7 @@ let SearchSelector = React.createClass({
       if (SessionStore.isUserLoggedIn() === true) {
         sessionstatus = (
           <ul className="session" onClick= {this._handleLogOut}>
+            <li> Hello, {SessionStore.currentUser().username}</li>
             <li> Log Out </li>
           </ul>
         );

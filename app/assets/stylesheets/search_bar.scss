@@ -75,7 +75,7 @@ select {
 .searchList {
   display: block;
   position: absolute;
-  left: 203px;
+  left: 223px;
   top: 62px;
   width: 410px;
   margin-left: 14px;
@@ -85,7 +85,7 @@ select {
 .searchList li{
   display: block;
   float: left;
-  width: 410px;
+  width: 485px;
   border-bottom: 1px solid #ccc;
   background: #fff;
 }
@@ -111,18 +111,28 @@ select {
 }
 
 .options li {
-  float: left;
+  float: right;
   padding: 0 10px 10px 10px;
   font-family: Verdana, Arial, sans-serif;
   font-size: 12px;
   color: #fff;
 }
 
+
 .session {
   float: right;
   display: block;
-  padding: 0 15px 10px 10px;
+  padding: 0 15px 0px 10px;
   font-family: Verdana, Arial, sans-serif;
   font-size: 12px;
   color: #fff;
+}
+
+.session li {
+  float: left;
+  padding: 0 5px 10px 10px;
+}
+
+.session li:first-child {
+  color: #ECC130;
 }

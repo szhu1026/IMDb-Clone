@@ -19,7 +19,10 @@ let ActorCastingComponent = React.createClass({
     let actors = ActorStore.all();
     this.setState({actors: actors, fetching: false});
   },
-
+  componentWillReceiveProps: function(nextProps){
+    this.setState({fetching: true});
+    ActorActions.getMovieActors(nextProps.api_id);
+  },
   render: function(){
     if (this.state.fetching === false){
       return (
@@ -38,8 +41,7 @@ let ActorCastingComponent = React.createClass({
     }
     else {
       return(
-        <div>
-        <p> loading </p>
+        <div className="loader">
         </div>
       );
     }

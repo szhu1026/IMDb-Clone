@@ -15,6 +15,10 @@ let ActorCastingComponent = React.createClass({
   componentWillUnmount: function(){
     this.movieListener.remove();
   },
+  componentWillReceiveProps: function(nextProps){
+    this.setState({fetching: true});
+    MovieActions.getActorMovies(nextProps.api_id);
+  },
   setMovies: function(){
     let movies = MovieStore.all().sort(function(a,b){
         if (a.release_date === null) {
@@ -55,8 +59,7 @@ let ActorCastingComponent = React.createClass({
     }
     else {
       return (
-        <div>
-        <p> loading </p>
+        <div className="loader">
         </div>
       );
     }
