@@ -5,7 +5,10 @@ const React = require('react'),
       Actor = require('./components/actor_component.jsx'),
       Movie = require('./components/movie_component.jsx'),
       ActorCasting = require('./components/actor_casting_component.jsx'),
-      Search = require('./components/drop_down_search_menu_component.jsx')
+      Search = require('./components/drop_down_search_menu_component.jsx'),
+      LogInForm = require('./components/login_form_component.jsx'),
+      SessionStore = require('./stores/session_store'),
+      SessionActions = require('./actions/session_actions');
 
 
 const App = React.createClass({
@@ -21,18 +24,31 @@ const App = React.createClass({
 const routes = (
   <Route path="/" component={App}>
     <IndexRoute component={Search}/>
+    <Route path="/login" component={LogInForm}/>
+    <Route path="/signup" component={LogInForm}/>
     <Route path ="/search" component={Search}/>
     <Route path="/actors/:actorId" component={Actor}/>
     <Route path="/movies/:movieId" component={Movie}/>
   </Route>
 );
 
+
+function _ensureLoggedIn(nextState, replace) {
+  // We don't want users to be able to visit our 'new' or 'review' routes
+  // if they haven't already signed in/up. Let's redirect them!
+  // `replace` is like a redirect. It replaces the current entry
+  // into the history (and the hashFragment), so the Router is forced
+  // to re-route.
+    if (!SessionStore.isUserLoggedIn()) {
+      replace('/login');
+    }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
+  if (window.currentUser) {
+    SessionActions.receiveCurrentUser(window.currentUser);
+  }
+
   let root = document.getElementById("content");
   ReactDOM.render(<Router history={hashHistory} routes={routes}/>, root);
 });
-
-// window.routes = routes;
-
-
-// console.log("hello world!");

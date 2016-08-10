@@ -12,6 +12,7 @@ let SearchSelector = React.createClass({
   render: function() {
     return (
       <div className="Full-Search-Bar group">
+        <img className="logo" src={window.logo}/>
         <select className="toggle"
           value={this.state.selectValue}
           onChange={this.handleChange}>
@@ -19,6 +20,13 @@ let SearchSelector = React.createClass({
            <option value="Actors">Actors</option>
         </select>
         {this.state.selectValue === "Movies" ? <Search type="MovieSearch"/> : <Search type="ActorSearch"/>}
+        <ul className="options">
+          <li> Hot Movies </li>
+          <li> In Theatres Now </li>
+        </ul>
+        <ul className="session">
+          <li> Log In </li>
+        </ul>
       </div>
     );
   }
