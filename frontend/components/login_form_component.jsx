@@ -31,9 +31,16 @@ const LoginForm = React.createClass({
 
   redirectIfLoggedIn() {
     if (SessionStore.isUserLoggedIn()) {
-      this.context.router.goBack();
+      this.context.router.push("/")
     }
   },
+
+	handleLinkChange: function(){
+		this.setState({
+			username: "",
+			password: ""
+		})
+	},
 
 	handleSubmit(e) {
 		e.preventDefault();
@@ -59,14 +66,14 @@ const LoginForm = React.createClass({
       return <li key={ i }>{ errorMsg }</li>;
     });
 
-    return <ul>{ messages }</ul>;
+    return <ul className="errors">{ messages }</ul>;
   },
 
   formType() {
     return this.props.location.pathname.slice(1);
   },
 
-  update(property) {
+  update(property, e) {
     return (e) => this.setState({[property]: e.target.value});
   },
 
@@ -75,20 +82,30 @@ const LoginForm = React.createClass({
     let navLink;
 		let formtype = this.formType() === "login" ? "Sign In" : "Sign Up"
     if (this.formType() === "login") {
-      navLink = <Link to="/signup">sign up instead</Link>;
+      navLink = (
+				<div className="signupin_link">
+					<p> New to SZIMDb?
+					 <Link className="link" onClick={this.handleLinkChange}
+					 to="/signup"> Create your account. </Link>
+					</p>
+				</div>
+			);
     } else {
-      navLink = <Link to="/login">log in instead</Link>;
+      navLink = (
+				<div className="signupin_link">
+					<p> Already have an account?
+						<Link className="link" onClick={this.handleLinkChange}
+						to="/login">Sign in.</Link>
+					</p>
+				</div>
+			);
     }
 
-		// Please { this.formType() } below or { navLink }
-		//after login header
-		
 		return (
 			<div className="login-form-container group">
 				<img className="login-logo" src={window.logo}/>
 				<form onSubmit={this.handleSubmit} className="login-form-box">
 	        <p className="login-header"> {formtype} </p>
-
 	        { this.fieldErrors("base") }
 					<div className="login-form">
 						<label> Username:
@@ -110,6 +127,7 @@ const LoginForm = React.createClass({
 
 		        <br />
 						<input className="submit" type="submit" value="Submit" />
+						{navLink}
 					</div>
 				</form>
 			</div>

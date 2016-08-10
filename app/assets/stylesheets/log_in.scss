@@ -15,9 +15,9 @@
 .login-form-box {
   margin: 0 auto;
   width: 340px;
-  height: 250px;
+  height: auto;
   border: 1px solid #ccc;
-  display: block;
+  display: flex, block;
   padding: 20px;
 }
 
@@ -33,8 +33,9 @@
   border-radius: 3px;
   height: 30px;
   margin: 0 auto;
-  margin: 10px 0;
+  margin: 5px 0;
   font-weight: normal;
+  padding: 5px 5px 5px 10px;
 }
 
 .login-form label{
@@ -54,6 +55,25 @@
 }
 
 .login-header {
-  margin: 0 0 10px 20px;
+  margin: 0 0 5px 20px;
   font-size: 28px;
+}
+
+.errors {
+  font-size: 12px;
+  margin-left: 20px;
+  font-weight: normal;
+}
+
+.errors li{
+  padding: 2px;
+}
+
+.signupin_link {
+  font-size: 13px;
+  padding: 5px;
+}
+
+.signupin_link .link{
+  color: #0066c0;
 }
