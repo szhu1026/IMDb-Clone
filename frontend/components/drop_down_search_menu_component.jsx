@@ -56,7 +56,7 @@ let SearchSelector = React.createClass({
 
       return (
         <div className="Full-Search-Bar group">
-          <img className="logo" src={window.logo}/>
+          <Link to="/">  <img className="logo" src={window.logo}/> </Link>
           <select className="toggle"
             value={this.state.selectValue}
             onChange={this.handleChange}>
@@ -65,8 +65,8 @@ let SearchSelector = React.createClass({
           </select>
           {this.state.selectValue === "Movies" ? <Search type="MovieSearch"/> : <Search type="ActorSearch"/>}
           <ul className="options">
-            <li> Hot Movies </li>
-            <li> In Theatres Now </li>
+            <Link to="/"> <li> Hot Movies </li>  </Link>
+            <Link to="/"> <li> In Theatres Now </li> </Link>
           </ul>
           {sessionstatus}
         </div>

@@ -23,13 +23,23 @@ module.exports = {
       movies: movies
     })
   },
-  getinTheatreMovies: function(){
-    APIUtil.getInTheatreMovies(this.receiveinTheatreMovies);
+  getinTheatreMovies: function(offset){
+    APIUtil.getInTheatreMovies(offset, this.receiveinTheatreMovies);
   },
   receiveinTheatreMovies: function(movies) {
     APIDispatcher.dispatch({
       actionType: MovieConstants.IN_THEATRE_MOVIES_RECEIVED,
       movies: movies
     })
+  },
+  getHotMovies: function(offset){
+    APIUtil.getHotMovies(offset, this.receiveHotMovies);
+  },
+  receiveHotMovies: function(movies) {
+    APIDispatcher.dispatch({
+      actionType: MovieConstants.HOT_MOVIES_RECEIVED,
+      movies: movies
+    })
   }
+
 }

@@ -67,11 +67,20 @@ module.exports = {
     });
   },
 
-  getInTheatreMovies: function(cb){
+  getInTheatreMovies: function(offset, cb){
     $.ajax({
       url: 'https://api.themoviedb.org/3/movie/now_playing?api_key=50a303126fa608b8780f3e3caaf4695a&query',
       success: function(results) {
-        cb(results["results"]);
+        cb(results["results"].slice(offset, offset + 4));
+      }
+    });
+  },
+
+  getHotMovies: function(offset, cb){
+    $.ajax({
+      url: 'https://api.themoviedb.org/3/movie/popular?api_key=50a303126fa608b8780f3e3caaf4695a&query',
+      success: function(results) {
+        cb(results["results"].slice(offset, offset + 4));
       }
     });
   }

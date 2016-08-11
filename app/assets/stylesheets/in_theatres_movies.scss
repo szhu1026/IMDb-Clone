@@ -1,10 +1,19 @@
 .inTheatreMovies {
   width: 730px;
+  height: auto;
+  margin: 0 auto;
+  padding: 10px;
+  display: block;
+}
+
+.inTheatres {
+  width: 730px;
   height: 1000px;
   margin: 0 auto;
   padding: 10px;
   display: block;
 }
+
 
 .inTheatreMovies li {
   float: left;
@@ -21,11 +30,49 @@
 
 .inTheatreMovies .movie-image {
   width: 169px;
-  height: auto;
+  height: 253px;
   margin: 0 0 10px 11px;
 }
 
 .inTheatreMovies h1 {
   display: block;
-  padding: 10px;
+  padding: 10px 10px 10px 5px;
+  font-size: 15px;
+}
+
+.pagination {
+  margin: 0 auto;
+  display: block;
+  width: 200px;
+  height: 10px;
+  font-family: arial, sans-serif;
+  font-size: 10px;
+}
+.pagination .page {
+	// visibility: hidden;
+	// position: relative;
+  float: left;
+  margin: 0px 12px;
+}
+
+.pagination .previousLabel {
+  float: left;
+  padding: 0 5px;
+}
+
+.pagination .nextLabel {
+  padding: 0 5px;
+}
+
+.previous a{
+  float: left;
+  display: block;
+}
+
+.DisplayMovies {
+  margin: 0 auto;
+}
+
+.active {
+  border-bottom: 1px solid #ccc;
 }
