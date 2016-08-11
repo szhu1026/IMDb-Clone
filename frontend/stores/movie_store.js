@@ -15,7 +15,7 @@ let resetMovie = function(movie){
 let resetActorMovie = function(movies){
   _movies = {};
   movies.forEach(function(movie){
-    _movies[movie.id] = movie;
+    _movies[movie.api_id] = movie;
   })
 };
 
