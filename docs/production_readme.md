@@ -1,4 +1,4 @@
-# FresherNote
+# SZIMDb
 
 [SZIMDb][heroku] **NB:** This should be a link to your production site
 
@@ -12,15 +12,13 @@ SZIMDb is a full-stack web application inspired by IMDb.  It utilizes Ruby on Ra
 
 Users can search for a particular profile for any Movie or Actor.  The profile data is drawn from the following API: theMovieDB.  
 
-##Movie and Actor Profiles
-
-#Movie Profiles:
+##Movie Profiles:
 
 Movie profiles contain information about the movie, as well as its casting information.  The casting is sorted by number of credits.
 
 ![tag screenshot](Movie_profile.png)
 
-#Actor Profiles:
+##Actor Profiles:
 
 Actor profiles contain information about the actor, as well as the movies they have starred in.  Their starred movies is sorted by date.
 
