@@ -6,7 +6,6 @@ class Api::ActorsCommentsController < ApplicationController
 
   def create
 
-    if (current_user)
       ActorComment.create!(
         user_id: current_user.id,
         username: current_user.username,
@@ -16,7 +15,7 @@ class Api::ActorsCommentsController < ApplicationController
       )
       @comments = Actor.find_by({api_id: params[:actor_api_id]}).actor_comments
       render :index
-    end
+
     # else {
     #   render(
     #     json: {
