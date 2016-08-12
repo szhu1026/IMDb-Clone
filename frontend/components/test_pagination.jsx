@@ -11,6 +11,8 @@ let TestPagination = React.createClass({
   },
   componentDidMount: function(){
     this.movieListener = MovieStore.addListener(this.setmovie);
+    
+
     if (this.props.type === "In Theatres Now") {
       MovieActions.getinTheatreMovies(0);
     }

@@ -3,8 +3,11 @@ Rails.application.routes.draw do
 
   namespace :api,defaults: {format: :json} do
     resources :actors, param: :api_id, only: [:show] do
+      resources :actors_comments
     end
-    resources :movies, param: :api_id, only: [:show]
+    resources :movies, param: :api_id, only: [:show] do
+      resources :movies_comments
+    end
     resources :actors, param: :api_id, only: [:show] do
       member do
         get :movies

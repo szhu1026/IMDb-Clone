@@ -11,10 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160809182440) do
+ActiveRecord::Schema.define(version: 20160812014157) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "actor_comments", force: :cascade do |t|
+    t.text    "title"
+    t.text    "body"
+    t.text    "api_id"
+    t.text    "username"
+    t.integer "user_id"
+  end
 
   create_table "actors", force: :cascade do |t|
     t.text "adult"
@@ -37,6 +45,14 @@ ActiveRecord::Schema.define(version: 20160809182440) do
     t.text    "character_name"
     t.boolean "actor_casting",  default: false
     t.boolean "movie_casting",  default: false
+  end
+
+  create_table "movie_comments", force: :cascade do |t|
+    t.text    "title"
+    t.text    "body"
+    t.text    "api_id"
+    t.text    "username"
+    t.integer "user_id"
   end
 
   create_table "movies", force: :cascade do |t|

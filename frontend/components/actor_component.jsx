@@ -5,6 +5,8 @@ let Link = require('react-router').Link;
 let ActorIntroComponent = require('./actor_intro_component')
 let ActorCastingComponent = require('./actor_casting_component')
 let Searchbox = require('./drop_down_search_menu_component')
+let ActorComments = require('./actor_comments_component')
+let CommentForm = require('./comment_form')
 
 let Actor = React.createClass({
   getInitialState: function(){
@@ -35,7 +37,7 @@ let Actor = React.createClass({
       );
     }
     else {
-      return (
+      return(
         <div className="loader">
         </div>
       );
@@ -43,3 +45,6 @@ let Actor = React.createClass({
   }
 });
 module.exports = Actor
+
+// <CommentForm type="Actor"  api_id={this.props.params.actorId}/>
+// <ActorComments actor={this.state.actor}/>

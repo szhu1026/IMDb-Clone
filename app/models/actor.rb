@@ -4,6 +4,6 @@ class Actor < ActiveRecord::Base
 
  has_many :castings, :primary_key => :api_id
  has_many :movies, :through => :castings
-
+ has_many :actor_comments, :primary_key => :api_id, :foreign_key => :api_id
 
 end

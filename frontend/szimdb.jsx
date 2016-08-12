@@ -9,8 +9,8 @@ const React = require('react'),
       LogInForm = require('./components/login_form_component.jsx'),
       SessionStore = require('./stores/session_store'),
       SessionActions = require('./actions/session_actions'),
-      displaymovies = require('./components/test_pagination')
-
+      HotMovies = require('./components/hot_movies_component'),
+      InTheatres = require('./components/in_theatres_component')
 
 const App = React.createClass({
   render () {
@@ -24,10 +24,11 @@ const App = React.createClass({
 
 const routes = (
   <Route path="/" component={App}>
-    <IndexRoute component={Index}>
-      <Route path="nowplaying" component={displaymovies}/>
-      <Route path="hotmovies" component={displaymovies}/>
-    </IndexRoute>
+    <IndexRoute component={Index}/>
+    <Route path="/index" component={Index}>
+      <Route path="hotmovies" component={HotMovies}/>
+      <Route path="intheatres" component={InTheatres}/>
+    </Route>
     <Route path="/login" component={LogInForm}/>
     <Route path="/signup" component={LogInForm}/>
     <Route path="/actors/:actorId" component={Actor}/>

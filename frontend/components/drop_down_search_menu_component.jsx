@@ -65,8 +65,8 @@ let SearchSelector = React.createClass({
           </select>
           {this.state.selectValue === "Movies" ? <Search type="MovieSearch"/> : <Search type="ActorSearch"/>}
           <ul className="options">
-            <Link to="/"> <li> Hot Movies </li>  </Link>
-            <Link to="/"> <li> In Theatres Now </li> </Link>
+            <Link to="/index/hotmovies"> <li> Hot Movies </li>  </Link>
+            <Link to="/index/intheatres"> <li> In Theatres Now </li> </Link>
           </ul>
           {sessionstatus}
         </div>

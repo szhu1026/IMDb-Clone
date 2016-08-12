@@ -83,5 +83,46 @@ module.exports = {
         cb(results["results"].slice(offset, offset + 4));
       }
     });
+  },
+
+  getMovieComments: function(id, cb){
+    $.ajax({
+      url: `api/movies/${id}/movies_comments`,
+      success: function(results) {
+        cb(results);
+      }
+    });
+  },
+
+  getActorComments: function(id, cb){
+    $.ajax({
+      url: `api/actors/${id}/actors_comments`,
+      success: function(results) {
+        cb(results);
+      }
+    });
+  },
+
+  createActorComment: function(comment, id, cb) {
+    $.ajax({
+      url: `api/actors/${id}/actors_comments`,
+      method: "POST",
+      data: {comment: comment},
+      success: function(results) {
+        cb(results);
+      }
+    })
+  },
+
+  createMovieComment: function(comment, id, cb) {
+    $.ajax({
+      url: `api/movies/${id}/movies_comments`,
+      method: "POST",
+      data: {comment: comment},
+      success: function(results) {
+        cb(results);
+      }
+    })
   }
+
 }

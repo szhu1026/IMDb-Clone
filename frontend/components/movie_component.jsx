@@ -5,7 +5,8 @@ let Link = require('react-router').Link;
 let MovieIntroComponent = require('../components/movie_intro_component');
 let MovieCastingComponent = require('../components/movie_casting_component');
 let Searchbox = require('./drop_down_search_menu_component');
-
+let MovieComments = require('../components/movie_comments_component');
+let CommentForm = require('./comment_form')
 
 let Movie = React.createClass({
   getInitialState: function(){
@@ -45,3 +46,6 @@ let Movie = React.createClass({
   }
 });
 module.exports = Movie;
+
+// <CommentForm type="Movie"  api_id={this.props.params.movieId}/>
+// <MovieComments movie={this.state.movie} api_id={this.props.params.movieId}/>
