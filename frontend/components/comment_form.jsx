@@ -33,7 +33,7 @@ let CommentForm = React.createClass({
           <input type="text-area" value={this.state.body} onChange={this.update("body")}
           className="comment-field body"/>
 
-          <input type="submit" value="Create Comment" className="new-comment-button"/>
+          <input type="submit" value="Submit" className="new-comment-button"/>
         </form>
       </div>
     );

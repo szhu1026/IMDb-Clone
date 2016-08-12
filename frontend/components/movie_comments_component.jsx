@@ -24,13 +24,15 @@ let MovieComments = React.createClass({
   },
 
   render: function(){
+
     return (
       <div>
-        <ul>
+        <ul className="commentList">
         {this.state.comments.map(function(comment, idx){
           return (<li key={idx} className="commentItem">
-            <p className = "commentUser"> {comment.username} </p>
             <p className = "commentTitle"> {comment.title} </p>
+            <p className = "date"> {comment.created_at.slice(0, 10)} </p>
+            <p className = "commentUser"> by {comment.username} </p>
             <p className = "commentBody"> {comment.body} </p>
           </li>);
         })}

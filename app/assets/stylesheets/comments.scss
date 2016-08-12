@@ -1,12 +1,41 @@
 .commentform {
   display: block;
-  width: 300px;
+  width: 700px;
   height: auto;
-  border: 1px solid #ccc;
   float: left;
-  margin-left: 30px;
+  margin-left: -1px;
   font-family: Arial, sans-serif;
+  padding-top: 10px;
 }
+
+.commentHeader{
+  color: #664700;
+  font-size: 24px;
+  margin: 8px 0 16px 11px;
+  font-family: Helvetica Neue, Arial, Helvetica, sans-serif;
+}
+
+.AllComents {
+  border: 1px solid #ccc;
+  margin: 10px 0 0 14px;
+  width: 700px;
+  height: auto;
+}
+
+.commentList{
+  display: block;
+  height: auto;
+  float: left;
+  width: 500px;
+  margin-left: 18px;
+}
+
+// .commentList li{
+//   display: block;
+//   height: auto;
+//   width: 700px;
+//   padding: 10px 0;
+// }
 
 .comment-field-label {
   padding: 0 0 2px 2px;
@@ -18,7 +47,7 @@
 }
 
 .comment-field {
-  width: 185px;
+  width: 600px;
   border: 1px solid #ccc;
   border-radius: 3px;
   height: 11px;
@@ -28,6 +57,7 @@
   padding: 5px 5px 5px 10px;
   display: block;
   margin-left: 20px;
+  font-size: 12px;
 }
 
 .body{
@@ -36,5 +66,59 @@
 }
 
 .new-comment-button{
+  margin: 10px 0 15px 20px;
+  font-size: 9px;
+  background: #fcf3c2;
+  font-family: Verdana, Arial, sans-serif;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+  padding: 5px;
+}
 
+.commentItem {
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 12px;
+  height: auto;
+  width: 620px;
+  margin: 10px 0;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.commentItem .commentTitle{
+  font-weight: bold;
+  clear: both;
+}
+
+.commentItem .commentUser{
+  font-size: 9px;
+  float: left;
+  padding: 3px;
+}
+
+.commentItem  .date{
+  font-size: 9px;
+  float: left;
+  padding: 3px;
+  border-right: 1px solid black;
+}
+
+.commentItem .commentBody{
+  display: block;
+  clear: both;
+  padding: 3px;
+  width: auto;
+}
+
+.AllCommentsMovie {
+  margin: 10px 0 0 14px;
+  width: 700px;
+  height: auto;
+}
+
+.AllCommentsMovie .commentHeader{
+  font-size: 27px;
+  font-family: Arial, sans-serif;
+  color: black;
+  margin: 8px 0 0px 5px;
 }

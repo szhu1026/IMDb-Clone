@@ -6,7 +6,7 @@ let ActorCastingItemComponent = require('./actor_casting_item_component');
 
 let ActorCastingComponent = React.createClass({
   getInitialState: function(){
-    return ({movies: [], fetching: true});
+    return ({movies: [], fetching: true, showData: false});
   },
   componentDidMount: function(){
     this.movieListener = MovieStore.addListener(this.setMovies);
@@ -16,7 +16,7 @@ let ActorCastingComponent = React.createClass({
     this.movieListener.remove();
   },
   componentWillReceiveProps: function(nextProps){
-    this.setState({fetching: true});
+    this.setState({fetching: true, showData: false});
     MovieActions.getActorMovies(nextProps.api_id);
   },
   setMovies: function(){
@@ -40,26 +40,38 @@ let ActorCastingComponent = React.createClass({
 
     this.setState({movies: movies, fetching: false});
   },
-
+  showData: function(e){
+    e.preventDefault();
+    this.setState({showData: !this.state.showData});
+  },
   render: function(){
-    if (this.state.fetching === false) {
-      return (
-        <div className="Actor-Casting">
-        <p className="Title">Filmography</p>
-        <p className="Headers">Actor</p>
-        <ul className="Actor-Casting-List group">
-        {this.state.movies.map(function(movie, idx){
-          return (
-            <ActorCastingItemComponent key={idx} movie={movie}/>
-          );
-        })}
-        </ul>
-        </div>
-      );
+    if (this.state.showData === true) {
+      if (this.state.fetching === false) {
+        return (
+          <div className="Actor-Casting">
+          <p className="Title" onClick={this.showData}>Filmography &#8595;</p>
+          <p className="Headers">Actor</p>
+          <ul className="Actor-Casting-List group">
+          {this.state.movies.map(function(movie, idx){
+            return (
+              <ActorCastingItemComponent key={idx} movie={movie}/>
+            );
+          })}
+          </ul>
+          </div>
+        );
+      }
+      else {
+        return (
+          <div className="loader">
+          </div>
+        );
+      }
     }
     else {
       return (
-        <div className="loader">
+        <div className="Actor-Casting">
+        <p className="Title" onClick={this.showData}>Filmography &#8594;</p>
         </div>
       );
     }

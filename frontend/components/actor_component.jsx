@@ -10,7 +10,7 @@ let CommentForm = require('./comment_form')
 
 let Actor = React.createClass({
   getInitialState: function(){
-    return ({actor: {}, fetching: true});
+    return ({actor: {}, fetching: true, showComments: false});
   },
   componentDidMount: function(){
     this.actorListener = ActorStore.addListener(this.setActor);
@@ -21,30 +21,59 @@ let Actor = React.createClass({
   },
   componentWillReceiveProps: function(nextProps){
     ActorActions.getActor(nextProps.params.actorId);
+    this.setState({showComments: false})
   },
   setActor: function(){
     let actor = ActorStore.find(this.props.params.actorId);
     this.setState({actor: actor, fetching: false});
   },
+  showComments: function(e){
+    e.preventDefault();
+    this.setState({showComments: !this.state.showComments})
+  },
   render: function(){
-    if (this.state.fetching === false) {
-      return (
-        <div className="ActorComponent">
-          <Searchbox/>
-          <ActorIntroComponent actor={this.state.actor}/>
-          <ActorCastingComponent actor={this.state.actor} api_id={this.props.params.actorId}/>
-        </div>
-      );
+    if (this.state.showComments === true) {
+      if (this.state.fetching === false) {
+        return (
+          <div className="ActorComponent">
+            <Searchbox/>
+            <ActorIntroComponent actor={this.state.actor}/>
+            <ActorCastingComponent actor={this.state.actor} api_id={this.props.params.actorId}/>
+            <div className="AllComents">
+              <h1 className="commentHeader" onClick={this.showComments}> User Comments  &#8595;</h1>
+              <CommentForm type="Actor"  api_id={this.props.params.actorId}/>
+              <ActorComments actor={this.state.actor}/>
+            </div>
+          </div>
+        );
+      }
+      else {
+        return(
+          <div className="loader">
+          </div>
+        );
+      }
     }
     else {
-      return(
-        <div className="loader">
-        </div>
-      );
+      if (this.state.fetching === false) {
+        return (
+          <div className="ActorComponent">
+            <Searchbox/>
+            <ActorIntroComponent actor={this.state.actor}/>
+            <ActorCastingComponent actor={this.state.actor} api_id={this.props.params.actorId}/>
+            <div className="AllComents">
+              <h1 className="commentHeader" onClick={this.showComments}> User Comments &#8594;</h1>
+            </div>
+          </div>
+        );
+      }
+      else {
+        return(
+          <div className="loader">
+          </div>
+        );
+      }
     }
   }
 });
 module.exports = Actor
-
-// <CommentForm type="Actor"  api_id={this.props.params.actorId}/>
-// <ActorComments actor={this.state.actor}/>

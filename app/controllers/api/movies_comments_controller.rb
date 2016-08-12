@@ -6,7 +6,6 @@ class Api::MoviesCommentsController < ApplicationController
   end
 
   def create
-    debugger
     MovieComment.create!(
       user_id: current_user.id,
       username: current_user.username,
