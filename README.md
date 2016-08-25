@@ -1,6 +1,6 @@
 # SZIMDb
 
-[SZIMDb][heroku] **NB:** This should be a link to your production site
+[SZIMDb][heroku]
 
 [heroku]: http://www.szimdb.herokuapp.com
 
@@ -24,6 +24,8 @@ Actor profiles contain information about the actor, as well as the movies they h
 
 Users of the website can link between any movie and actor profile, drawing clear connections between two entities.  
 
+![tag screenshot](Actor_profile.png)
+
 ##Movie displays
 
 Users can view a carousel display of now playing movies and popular movies.  The ratings are also drawn from theMovieDB.
@@ -33,6 +35,6 @@ Users can view a carousel display of now playing movies and popular movies.  The
 ##User Functionality:
 
 Currently, logged in users can only post comments pertaining to a profile.  I plan to add the following functionality soon:
-  -delete comments
-  -edit comments
-  -load user photo
+  - [ ] delete comments
+  - [ ] edit comments
+  - [ ] load user photo
