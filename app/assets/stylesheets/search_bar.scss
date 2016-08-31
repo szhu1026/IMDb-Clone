@@ -131,8 +131,6 @@ select {
 .session li {
   float: left;
   padding: 0 5px 10px 10px;
-}
-
-.session li:first-child {
   color: #ECC130;
+  cursor: pointer;
 }

@@ -13,7 +13,7 @@ let MovieIntroComponent = React.createClass({
           <p className="movie-rating"> {this.props.movie.vote_average}/10</p>
             <p className="movie-title"> {this.props.movie.original_title} </p>
             <img className="movie-image" src={`http://image.tmdb.org/t/p/w154/${this.props.movie.poster_path}`}/>
-            <iframe className="trailer" width="500" height="225" src="https://www.youtube.com/watch_popup?v=tntOCGkgt98" frameborder="0" allowfullscreen></iframe>
+            <iframe className="trailer" width="500" height="225" src="https://www.youtube.com/watch_popup?v=tntOCGkgt98"></iframe>
           </div>
           <div className="movie-intro-text">
             <p className="movie-biography"> {this.props.movie.overview} </p>
