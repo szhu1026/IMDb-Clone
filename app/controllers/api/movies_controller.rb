@@ -67,7 +67,7 @@ class Api::MoviesController < ApplicationController
 
   def pull_movie_data(api_id)
     api_id = params[:api_id]
-    link = "https://api.themoviedb.org/3/movie/#{api_id}?api_key=50a303126fa608b8780f3e3caaf4695a"
+    link = "https://api.themoviedb.org/3/movie/#{api_id}?api_key=50a303126fa608b8780f3e3caaf4695a&append_to_response=videos"
     response = RestClient::Request.execute(url: link, method: :get, verify_ssl: false)
     response_data = JSON.parse(response);
 
@@ -79,7 +79,8 @@ class Api::MoviesController < ApplicationController
       "vote_average": response_data["vote_average"],
       "poster_path": response_data["poster_path"],
       "api_id": response_data["id"],
-      "release_date": response_data["release_date"]
+      "release_date": response_data["release_date"],
+      "trailer": response_data["videos"]["results"][0]["key"]
     }
 
     Movie.create(movie_params);

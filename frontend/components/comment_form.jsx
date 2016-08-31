@@ -2,6 +2,8 @@ let React = require('react');
 let Link = require('react-router').Link;
 let CommentActions = require('../actions/comments_actions');
 let CommentStore = require('../stores/comments_store');
+let SessionStore = require('../stores/session_store');
+let SessionActions = require('../actions/session_actions');
 
 let CommentForm = React.createClass({
   getInitialState: function(){
@@ -22,8 +24,17 @@ let CommentForm = React.createClass({
     return (e) => this.setState({[property]: e.target.value});
   },
   render: function(){
+
+    let sessionstatus;
+    if (!SessionStore.isUserLoggedIn() === true) {
+      sessionstatus = (
+        <p> You must be logged-in to post comments. </p>
+      );
+    }
+
     return (
       <div className="commentform group">
+        {sessionstatus}
         <form onSubmit={this.handleSubmit}>
           <label className="comment-field-label">Title</label>
           <input type="text" value={this.state.title} onChange={this.update("title")}

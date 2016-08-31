@@ -25,6 +25,8 @@ let ActorComments = React.createClass({
 
   render: function(){
 
+
+
     return (
       <div>
         <ul className="commentList group">
