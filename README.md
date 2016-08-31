@@ -2,7 +2,7 @@
 
 [SZIMDb][heroku]
 
-[heroku]: http://www.szimdb.herokuapp.com
+[heroku]: https://szimdb.herokuapp.com/
 
 SZIMDb is a full-stack web application inspired by IMDb.  It utilizes Ruby on Rails on the backend, a PostgreSQL database, and React.js with a Flux architectural framework on the frontend.  
 
