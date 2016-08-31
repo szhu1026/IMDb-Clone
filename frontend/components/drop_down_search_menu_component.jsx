@@ -22,6 +22,9 @@ let SearchSelector = React.createClass({
     _handleLogOut(){
       SessionActions.logOut();
     },
+    _handleGuestLogIn(){
+      SessionActions.guestLogIn();
+    },
     render: function() {
 
       let sessionstatus;
@@ -35,11 +38,12 @@ let SearchSelector = React.createClass({
       }
       else {
         sessionstatus = (
-          <Link to='/login'>
-            <ul className="session">
+          <ul className="session">
+            <Link to='/login'>
               <li> Log In </li>
-            </ul>
-          </Link>
+            </Link>
+            <li onClick = {this._handleGuestLogIn}> Guest </li>
+          </ul>
         );
       }
 
@@ -53,6 +57,11 @@ let SearchSelector = React.createClass({
       //   </ul>
       // </Link>
 
+      // <ul className="options">
+      //   <Link to="/index/hotmovies"> <li> Hot Movies </li>  </Link>
+      //   <Link to="/index/intheatres"> <li> In Theatres Now </li> </Link>
+      // </ul>
+
 
       return (
         <div className="Full-Search-Bar group">
@@ -64,10 +73,6 @@ let SearchSelector = React.createClass({
              <option value="Actors">Actors</option>
           </select>
           {this.state.selectValue === "Movies" ? <Search type="MovieSearch"/> : <Search type="ActorSearch"/>}
-          <ul className="options">
-            <Link to="/index/hotmovies"> <li> Hot Movies </li>  </Link>
-            <Link to="/index/intheatres"> <li> In Theatres Now </li> </Link>
-          </ul>
           {sessionstatus}
         </div>
       );

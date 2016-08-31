@@ -24,7 +24,6 @@ const SessionActions = {
 
   logOut() {
     SessionApiUtil.logOut(SessionActions.removeCurrentUser);
-
   },
 
   fetchCurrentUser(complete){
@@ -43,8 +42,15 @@ const SessionActions = {
     AppDispatcher.dispatch({
       actionType: SessionConstants.LOGOUT
     });
-  }
+  },
 
+  guestLogIn(){
+    SessionApiUtil.logIn(
+      {username: "guest", password: "hello123"},
+      SessionActions.receiveCurrentUser,
+      ErrorActions.setErrors
+    );
+  }
 };
 
 module.exports = SessionActions;
