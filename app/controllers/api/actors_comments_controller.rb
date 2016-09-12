@@ -16,6 +16,18 @@ class Api::ActorsCommentsController < ApplicationController
     end
   end
 
+  def update
+    @comments = ActorComment.find_by({
+      user_id: current_user.id,
+      id: params[:id]
+    })
+
+    if (@comments.update(title: comment_params[:title], body: comment_params[:body]))
+      @comments = Actor.find_by({api_id: params[:actor_api_id]}).actor_comments
+      render :index
+    end
+  end
+
   def create
 
     if current_user

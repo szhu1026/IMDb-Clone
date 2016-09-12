@@ -150,6 +150,15 @@ module.exports = {
         cb(results);
       }
     })
+  },
+  editActorComment: function(actorId, id, comment, cb) {
+    $.ajax({
+      url: `api/actors/${actorId}/actors_comments/${id}`,
+      method: "PATCH",
+      data: {comment: comment},
+      success: function(results) {
+        cb(results);
+      }
+    })
   }
-
 }

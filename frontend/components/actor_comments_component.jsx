@@ -4,6 +4,7 @@ let CommentActions = require('../actions/comments_actions');
 let CommentStore = require('../stores/comments_store');
 let SessionStore = require('../stores/session_store');
 let SessionActions = require('../actions/session_actions');
+let ActorComment = require('./actor_comment_component');
 
 let ActorComments = React.createClass({
   getInitialState: function(){
@@ -24,23 +25,15 @@ let ActorComments = React.createClass({
   componentWillReceiveProps: function(nextProps){
     CommentActions.getActorComments(nextProps.api_id);
   },
-  deleteComment: function(id){
-    CommentActions.deleteActorComments(this.props.actor.api_id, id);
-  },
   render: function(){
     let ctx = this;
+    let actor = this.props.actor
 
     return (
       <div>
         <ul className="commentList group">
         {this.state.comments.map(function(comment, idx){
-          return (<li key={idx} className="commentItem">
-            <p className = "commentTitle"> {comment.title} </p>
-            <p className = "date"> {comment.created_at} </p>
-            <p className = "commentUser">by {comment.username} </p>
-            {comment.username === SessionStore.currentUser().username ? <button className="delete-comment-button" onClick={ctx.deleteComment.bind(null, comment.id)}> Delete </button> : ""}
-            <p className = "commentBody"> {comment.body} </p>
-          </li>);
+          return <li><ActorComment comment={comment} actor={actor} commentType="Actor" > </ActorComment></li>
         })}
         </ul>
       </div>

@@ -48,5 +48,9 @@ module.exports = {
   },
   deleteMovieComments: function(movieId, id){
     APIUtil.deleteMovieComment(movieId, id, this.receiveMovieComment);
+  },
+
+  editActorComment: function(actorId, id, comment){
+    APIUtil.editActorComment(actorId, id, comment, this.receiveActorComment);
   }
 };
