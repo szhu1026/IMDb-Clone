@@ -160,5 +160,15 @@ module.exports = {
         cb(results);
       }
     })
+  },
+  editMovieComment: function(movieId, id, comment, cb) {
+    $.ajax({
+      url: `api/movies/${movieId}/movies_comments/${id}`,
+      method: "PATCH",
+      data: {comment: comment},
+      success: function(results) {
+        cb(results);
+      }
+    })
   }
 }

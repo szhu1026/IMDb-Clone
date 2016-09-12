@@ -52,5 +52,8 @@ module.exports = {
 
   editActorComment: function(actorId, id, comment){
     APIUtil.editActorComment(actorId, id, comment, this.receiveActorComment);
+  },
+  editMovieComment: function(movieId, id, comment){
+    APIUtil.editMovieComment(movieId, id, comment, this.receiveMovieComment);
   }
 };

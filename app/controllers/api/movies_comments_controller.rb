@@ -17,6 +17,18 @@ class Api::MoviesCommentsController < ApplicationController
     end
   end
 
+  def update
+    @comments = MovieComment.find_by({
+      user_id: current_user.id,
+      id: params[:id]
+    })
+
+    if (@comments.update(title: comment_params[:title], body: comment_params[:body]))
+      @comments = Movie.find_by({api_id: params[:movie_api_id]}).movie_comments
+      render :index
+    end
+  end
+
 
   def create
 
