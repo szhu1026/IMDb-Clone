@@ -5,6 +5,8 @@ let CommentStore = require('../stores/comments_store');
 let SessionStore = require('../stores/session_store');
 let SessionActions = require('../actions/session_actions');
 let ErrorStore = require('../stores/error_store');
+let ErrorActions = require('../actions/error_actions');
+
 
 let CommentForm = React.createClass({
   getInitialState: function(){
@@ -22,9 +24,11 @@ let CommentForm = React.createClass({
     e.preventDefault();
     let comment = Object.assign({}, this.state);
     if (this.props.type === "Actor") {
+      ErrorActions.clearErrors();
       CommentActions.createActorComment(comment, this.props.api_id);
     }
     else {
+      ErrorActions.clearErrors();
       CommentActions.createMovieComment(comment, this.props.api_id);
     }
     this.setState({title: "", body:""})

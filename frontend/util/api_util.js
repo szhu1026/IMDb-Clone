@@ -118,13 +118,17 @@ module.exports = {
     })
   },
 
-  createMovieComment: function(comment, id, cb) {
+  createMovieComment: function(comment, id, cb, error) {
     $.ajax({
       url: `api/movies/${id}/movies_comments`,
       method: "POST",
       data: {comment: comment},
       success: function(results) {
         cb(results);
+      },
+      error(xhr) {
+        const errors = xhr.responseJSON;
+        error("login", errors);
       }
     })
   }

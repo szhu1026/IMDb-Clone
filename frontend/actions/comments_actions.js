@@ -34,7 +34,7 @@ module.exports = {
   },
 
   createMovieComment: function(comment, id){
-    APIUtil.createMovieComment(comment, id, this.receiveMovieComment);
+    APIUtil.createMovieComment(comment, id, this.receiveMovieComment, ErrorActions.setErrors);
   },
   receiveMovieComment: function(comments){
     APIDispatcher.dispatch({
