@@ -4,6 +4,18 @@ class Api::ActorsCommentsController < ApplicationController
     @comments = Actor.find_by({api_id: params[:actor_api_id]}).actor_comments
   end
 
+  def destroy
+    @comments = ActorComment.find_by({
+      user_id: current_user.id,
+      id: params[:id]
+    })
+
+    if (@comments.destroy)
+      @comments = Actor.find_by({api_id: params[:actor_api_id]}).actor_comments
+      render :index
+    end
+  end
+
   def create
 
     if current_user

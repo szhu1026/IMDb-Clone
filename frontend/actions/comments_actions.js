@@ -41,5 +41,9 @@ module.exports = {
       actionType: CommentConstants.MOVIE_COMMENT_RECEIVED,
       comments: comments
     });
+  },
+
+  deleteActorComments: function(actorId, id){
+    APIUtil.deleteActorComment(actorId, id, this.receiveActorComment);
   }
-};
+};s

@@ -131,6 +131,16 @@ module.exports = {
         error("login", errors);
       }
     })
-  }
+  },
+
+  deleteActorComment: function(actorId, id, cb) {
+    $.ajax({
+      url: `api/actors/${actorId}/actors_comments/${id}`,
+      method: "DELETE",
+      success: function(results) {
+        cb(results);
+      }
+    })
+  },
 
 }

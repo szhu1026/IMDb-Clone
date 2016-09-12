@@ -84,6 +84,17 @@
   cursor: pointer;
 }
 
+.delete-comment-button{
+  margin: 0px 0px 10px 10px;
+  font-size: 9px;
+  background: #fcf3c2;
+  font-family: Verdana, Arial, sans-serif;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+  padding: 5px;
+  cursor: pointer;
+}
+
 .commentItem {
   font-family: Verdana, Arial, sans-serif;
   font-size: 12px;
