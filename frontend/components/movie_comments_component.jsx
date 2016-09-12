@@ -33,7 +33,7 @@ let MovieComments = React.createClass({
       <div>
         <ul className="commentList group">
         {this.state.comments.map(function(comment, idx){
-          return <li><MovieComment comment={comment} movie={movie} commentType="Movie" > </MovieComment></li>
+          return <li key={idx}><MovieComment comment={comment} movie={movie} commentType="Movie" > </MovieComment></li>
         })}
         </ul>
       </div>
