@@ -142,5 +142,14 @@ module.exports = {
       }
     })
   },
+  deleteMovieComment: function(movieId, id, cb) {
+    $.ajax({
+      url: `api/movies/${movieId}/movies_comments/${id}`,
+      method: "DELETE",
+      success: function(results) {
+        cb(results);
+      }
+    })
+  }
 
 }

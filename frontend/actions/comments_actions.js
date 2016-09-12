@@ -45,5 +45,8 @@ module.exports = {
 
   deleteActorComments: function(actorId, id){
     APIUtil.deleteActorComment(actorId, id, this.receiveActorComment);
+  },
+  deleteMovieComments: function(movieId, id){
+    APIUtil.deleteMovieComment(movieId, id, this.receiveMovieComment);
   }
-};s
+};

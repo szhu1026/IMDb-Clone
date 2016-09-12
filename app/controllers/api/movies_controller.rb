@@ -80,7 +80,7 @@ class Api::MoviesController < ApplicationController
       "poster_path": response_data["poster_path"],
       "api_id": response_data["id"],
       "release_date": response_data["release_date"],
-      "trailer": response_data["videos"]["results"][0]["key"]
+      "trailer": response_data["videos"]["results"].empty? ? "": response_data["videos"]["results"][0]["key"] 
     }
 
     Movie.create(movie_params);

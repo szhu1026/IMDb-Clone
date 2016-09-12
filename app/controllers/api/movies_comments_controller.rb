@@ -5,6 +5,19 @@ class Api::MoviesCommentsController < ApplicationController
     render :index
   end
 
+  def destroy
+    @comments = MovieComment.find_by({
+      user_id: current_user.id,
+      id: params[:id]
+    })
+
+    if (@comments.destroy)
+      @comments = Movie.find_by({api_id: params[:movie_api_id]}).movie_comments
+      render :index
+    end
+  end
+
+
   def create
 
     if current_user

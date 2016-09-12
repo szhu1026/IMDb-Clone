@@ -2,6 +2,8 @@ let React = require('react');
 let Link = require('react-router').Link;
 let CommentActions = require('../actions/comments_actions');
 let CommentStore = require('../stores/comments_store');
+let SessionStore = require('../stores/session_store');
+let SessionActions = require('../actions/session_actions');
 
 let MovieComments = React.createClass({
   getInitialState: function(){
@@ -22,9 +24,11 @@ let MovieComments = React.createClass({
   componentWillReceiveProps: function(nextProps){
     CommentActions.getMovieComments(nextProps.api_id);
   },
-
+  deleteComment: function(id){
+    CommentActions.deleteMovieComments(this.props.movie.api_id, id);
+  },
   render: function(){
-
+    let ctx = this;
     return (
       <div>
         <ul className="commentList">
@@ -33,6 +37,7 @@ let MovieComments = React.createClass({
             <p className = "commentTitle"> {comment.title} </p>
             <p className = "date"> {comment.created_at} </p>
             <p className = "commentUser"> by {comment.username} </p>
+            {comment.username === SessionStore.currentUser().username ? <button className="delete-comment-button" onClick={ctx.deleteComment.bind(null, comment.id)}> Delete </button> : ""}
             <p className = "commentBody"> {comment.body} </p>
           </li>);
         })}
