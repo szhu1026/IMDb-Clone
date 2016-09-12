@@ -103,13 +103,17 @@ module.exports = {
     });
   },
 
-  createActorComment: function(comment, id, cb) {
+  createActorComment: function(comment, id, cb, error) {
     $.ajax({
       url: `api/actors/${id}/actors_comments`,
       method: "POST",
       data: {comment: comment},
       success: function(results) {
         cb(results);
+      },
+      error(xhr) {
+        const errors = xhr.responseJSON;
+        error("login", errors);
       }
     })
   },

@@ -6,24 +6,27 @@ class Api::ActorsCommentsController < ApplicationController
 
   def create
 
-      ActorComment.create!(
+    if current_user
+      comment = ActorComment.create!(
         user_id: current_user.id,
         username: current_user.username,
         title: comment_params[:title],
         body: comment_params[:body],
         api_id: params[:actor_api_id]
       )
+    end
+
+    if comment
       @comments = Actor.find_by({api_id: params[:actor_api_id]}).actor_comments
       render :index
-
-    # else {
-    #   render(
-    #     json: {
-    #       base: ["You must be logged in to add comments"]
-    #     },
-    #     status: 401
-    #   )
-    # }
+    else
+      render(
+        json: {
+          base: ["Must be signed in to add comments"]
+        },
+        status: 404
+      )
+    end
   end
 
   private

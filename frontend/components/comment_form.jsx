@@ -4,10 +4,19 @@ let CommentActions = require('../actions/comments_actions');
 let CommentStore = require('../stores/comments_store');
 let SessionStore = require('../stores/session_store');
 let SessionActions = require('../actions/session_actions');
+let ErrorStore = require('../stores/error_store');
 
 let CommentForm = React.createClass({
   getInitialState: function(){
     return ({title: "", body: ""});
+  },
+  componentDidMount() {
+    this.errorListener = ErrorStore.addListener(this.forceUpdate.bind(this));
+    this.sessionListener = SessionStore.addListener(this.redirectIfLoggedIn);
+  },
+  componentWillUnmount() {
+    this.errorListener.remove();
+    this.sessionListener.remove();
   },
   handleSubmit: function(e){
     e.preventDefault();
@@ -23,18 +32,21 @@ let CommentForm = React.createClass({
   update(property) {
     return (e) => this.setState({[property]: e.target.value});
   },
+  fieldErrors(field) {
+    const errors = ErrorStore.formErrors("login");
+    if (!errors["base"]) { return; }
+    const messages = errors["base"].map( (errorMsg, i) => {
+      return <li key={ i }>{ errorMsg }</li>;
+    });
+    return <ul className="errors">{ messages }</ul>;
+
+  },
   render: function(){
 
-    let sessionstatus;
-    if (!SessionStore.isUserLoggedIn() === true) {
-      sessionstatus = (
-        <p> You must be logged-in to post comments. </p>
-      );
-    }
 
     return (
       <div className="commentform group">
-        {sessionstatus}
+        { this.fieldErrors("login") }
         <form onSubmit={this.handleSubmit}>
           <label className="comment-field-label">Title</label>
           <input type="text" value={this.state.title} onChange={this.update("title")}

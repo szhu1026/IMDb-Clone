@@ -33,7 +33,7 @@ ErrorStore.__onDispatch = function (payload) {
 };
 
 ErrorStore.formErrors = function (form) {
-  if (form !== _form) {
+    if (form !== _form) {
     return {};
   }
 
@@ -43,10 +43,11 @@ ErrorStore.formErrors = function (form) {
     result[field] = Array.from(_errors[field]);
   }
 
+
   return result;
 };
 
-ErrorStore.form = function() { 
+ErrorStore.form = function() {
   return _form;
 };
 

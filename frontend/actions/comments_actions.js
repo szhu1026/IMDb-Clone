@@ -1,6 +1,7 @@
 const APIUtil = require('../util/api_util.js');
 const APIDispatcher = require('../dispatcher/dispatcher.js');
 const CommentConstants = require('../constants/comment_constants.js');
+const ErrorActions = require('../actions/error_actions.js')
 
 module.exports = {
   getMovieComments: function(id){
@@ -23,7 +24,7 @@ module.exports = {
   },
 
   createActorComment: function(comment, id){
-    APIUtil.createActorComment(comment, id, this.receiveActorComment);
+    APIUtil.createActorComment(comment, id, this.receiveActorComment, ErrorActions.setErrors);
   },
   receiveActorComment: function(comments){
     APIDispatcher.dispatch({
