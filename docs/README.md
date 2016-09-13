@@ -2,7 +2,7 @@
 
 [Heroku link][heroku]
 
-[heroku]: https://szimdb.herokuapp.com/
+[heroku]: http://szimdb.herokuapp.com/
 
 ## Minimum Viable Product
 

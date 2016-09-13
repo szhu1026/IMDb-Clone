@@ -34,7 +34,7 @@
   display: block;
   height: auto;
   float: left;
-  width: 500px;
+  width: auto;
   margin-left: 18px;
 }
 
@@ -73,6 +73,7 @@
   padding-bottom: 15px;
 }
 
+
 .new-comment-button{
   margin: 10px 0 15px 20px;
   font-size: 9px;
@@ -103,6 +104,7 @@
   margin: 10px 0;
   padding-bottom: 10px;
   border-bottom: 1px solid #ccc;
+  word-wrap: break-word;
 }
 
 .commentItem .commentTitle{
@@ -128,6 +130,7 @@
   clear: both;
   padding: 3px;
   width: auto;
+  word-wrap: break-word;
 }
 
 .AllCommentsMovie {
@@ -141,4 +144,18 @@
   font-family: Arial, sans-serif;
   color: black;
   margin: 8px 0 0px 5px;
+}
+
+.commentItem .comment-field {
+  width: 575px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin: 0 auto;
+  margin: 5px 0;
+  font-weight: normal;
+  padding: 5px 5px 5px 10px;
+  display: block;
+  margin-left: 20px;
+  font-size: 12px;
+  word-wrap: break-word;
 }

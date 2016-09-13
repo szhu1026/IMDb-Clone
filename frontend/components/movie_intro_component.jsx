@@ -3,11 +3,11 @@ let MovieStore = require('../stores/movie_store');
 let MovieActions = require('../actions/movie_actions');
 let Link = require('react-router').Link;
 
-// https://www.youtube.com/embed/tntOCGkgt98
+// http://www.youtube.com/embed/tntOCGkgt98
 
 let MovieIntroComponent = React.createClass({
   render: function(){
-      let video = "https://www.youtube.com/watch_popup?v=" + this.props.movie.trailer;
+      let video = "http://www.youtube.com/watch_popup?v=" + this.props.movie.trailer;
       return (
         <div className="movie-intro-component">
           <div className="movie-intro-partone group">

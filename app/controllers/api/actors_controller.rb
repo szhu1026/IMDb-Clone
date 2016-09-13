@@ -2,6 +2,7 @@ class Api::ActorsController < ApplicationController
 
   def show
     #actor base information pull
+
     if Actor.where({birthday: nil, api_id: params[:api_id]})
       @actor = pull_actor_data(params[:api_id])
     elsif Actor.where({api_id: params[:api_id]})
@@ -13,11 +14,11 @@ class Api::ActorsController < ApplicationController
   end
 
   def movies
+    
     if Casting.where({actor_id: params[:api_id], actor_casting: true}).empty?
       movie_ids = pull_casting_data(params[:api_id]);
       movie_ids = Casting.where({actor_id: params[:api_id]}).map{|id| id.movie_id}
-      @movies =  Movie
-      .select("movies.*, castings.character_name as character_name")
+      @movies =  Movie.select("movies.*, castings.character_name as character_name")
       .joins(:castings)
       .where({api_id: movie_ids})
       # Movie.where({api_id: movie_ids})
@@ -26,8 +27,6 @@ class Api::ActorsController < ApplicationController
       end
 
     else
-      # movie_ids = Casting.where({actor_id: params[:api_id]}).map{|id| id.movie_id}
-      # @movies = Movie.where({api_id: movie_ids})
       @movies = Actor.find_by({api_id: params[:api_id]}).movies
       .joins(:castings)
       .select("movies.*, castings.character_name as character_name")
@@ -38,7 +37,7 @@ class Api::ActorsController < ApplicationController
 
   def pull_casting_data(api_id)
     api_id = params[:api_id]
-    link = "https://api.themoviedb.org/3/person/#{api_id}/credits?api_key=50a303126fa608b8780f3e3caaf4695a"
+    link = "http://api.themoviedb.org/3/person/#{api_id}/credits?api_key=50a303126fa608b8780f3e3caaf4695a"
     response = RestClient::Request.execute(url: link, method: :get, verify_ssl: false)
     response_data = JSON.parse(response)["cast"];
     params_data = response_data.map do |elem|
@@ -66,7 +65,7 @@ class Api::ActorsController < ApplicationController
 
   def pull_actor_data(api_id)
     api_id = params[:api_id]
-    link = "https://api.themoviedb.org/3/person/#{api_id}?api_key=50a303126fa608b8780f3e3caaf4695a"
+    link = "http://api.themoviedb.org/3/person/#{api_id}?api_key=50a303126fa608b8780f3e3caaf4695a"
     response = RestClient::Request.execute(url: link, method: :get, verify_ssl: false)
     response_data = JSON.parse(response);
 
