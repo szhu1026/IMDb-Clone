@@ -8,7 +8,7 @@ let ActorIntroComponent = React.createClass({
     if (this.props.actor.profile_path === null) {
       return (
           <div className="actor-intro-component group">
-            <img className="actor-picture" src="https://ia.media-imdb.com/images/G/01/imdb/images/nopicture/32x44/name-2138558783._CB282476566_.png"/>
+            <img className="actor-picture" src="http://ia.media-imdb.com/images/G/01/imdb/images/nopicture/32x44/name-2138558783._CB282476566_.png"/>
             <div className="actor-intro-component-text group">
               <p className="actor-name">{this.props.actor.name} </p>
               <p className="actor-biography"> {this.props.actor.biography} </p>
@@ -20,7 +20,7 @@ let ActorIntroComponent = React.createClass({
     } else {
       return (
         <div className="actor-intro-component group">
-          <img className="actor-picture" src={`https://image.tmdb.org/t/p/w154/${this.props.actor.profile_path}`}/>
+          <img className="actor-picture" src={`http://image.tmdb.org/t/p/w154/${this.props.actor.profile_path}`}/>
           <div className="actor-intro-component-text group">
             <p className="actor-name">{this.props.actor.name} </p>
             <p className="actor-biography"> {this.props.actor.biography} </p>

@@ -10,7 +10,7 @@ let ActorCastingItemComponent = React.createClass({
     //       <li className="actor-casting-item-component">
     //         <p className="movie-name" onClick={this.showMovie}> {this.props.movie.original_title} </p>
     //         <p className="movie-date"> {this.props.movie.release_date} </p>
-    //         <img className="unavailabe" src="https://www.promaxequipment.com/static/image-unavailable.png" onClick={this.showMovie}/>
+    //         <img className="unavailabe" src="http://www.promaxequipment.com/static/image-unavailable.png" onClick={this.showMovie}/>
     //       </li>
     //     </Link>
     //     </div>

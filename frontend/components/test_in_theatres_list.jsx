@@ -12,7 +12,7 @@ let TestinTheatreMovies = React.createClass({
             return (
               <Link key={idx}to={`movies/${movie.id}`}>
               <li className="Movie" key={idx}>
-              <img className="movie-image" src={`https://image.tmdb.org/t/p/w154/${movie.poster_path}`}/>
+              <img className="movie-image" src={`http://image.tmdb.org/t/p/w154/${movie.poster_path}`}/>
               </li>
               </Link>
             );
