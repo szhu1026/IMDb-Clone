@@ -34,7 +34,7 @@ Users can view a carousel display of now playing movies and popular movies.  The
 
 ##User Functionality:
 
-Currently, logged in users can only post comments pertaining to a profile.  I plan to add the following functionality soon:
+Currently, logged in users can do the following:
   - [ ] delete comments
   - [ ] edit comments
-  - [ ] load user photo
+  - [ ] post comments
