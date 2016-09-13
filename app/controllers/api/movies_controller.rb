@@ -38,7 +38,7 @@ class Api::MoviesController < ApplicationController
 
   def pull_casting_data(api_id)
     api_id = params[:api_id]
-    link = "http://api.themoviedb.org/3/movie/#{api_id}/credits?api_key=50a303126fa608b8780f3e3caaf4695a"
+    link = "https://api.themoviedb.org/3/movie/#{api_id}/credits?api_key=50a303126fa608b8780f3e3caaf4695a"
     response = RestClient::Request.execute(url: link, method: :get, verify_ssl: false)
     response_data = JSON.parse(response)["cast"];
 
@@ -67,7 +67,7 @@ class Api::MoviesController < ApplicationController
 
   def pull_movie_data(api_id)
     api_id = params[:api_id]
-    link = "http://api.themoviedb.org/3/movie/#{api_id}?api_key=50a303126fa608b8780f3e3caaf4695a&append_to_response=videos"
+    link = "https://api.themoviedb.org/3/movie/#{api_id}?api_key=50a303126fa608b8780f3e3caaf4695a&append_to_response=videos"
     response = RestClient::Request.execute(url: link, method: :get, verify_ssl: false)
     response_data = JSON.parse(response);
 
